@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Npgsql;
 
 class Program
@@ -22,7 +22,7 @@ class Program
         Console.WriteLine("\n=== Вивід даних із таблиць ===");
         ShowTableSummary(conn, "shelters", "shelter_id, shelter_name, address, phone, email");
         ShowTableSummary(conn, "users", "user_id, user_name, user_surname, email, password, phone, role");
-        ShowTableSummary(conn, "pets", "pet_id, pet_name, type, age, gender, description, health, photourl, shelter_id");
+        ShowTableSummary(conn, "pets", "pet_id, pet_name, type, age, gender, description, health, photourl, shelter_id, status");
         ShowTableSummary(conn, "adoption_requests", "adopt_id, user_id, pet_id, date, status");
 
         Console.WriteLine("\n=== Вивід з JOIN ===");
@@ -35,14 +35,12 @@ class Program
     // ----------------- Вставка притулків -----------------
     static void InsertShelters(NpgsqlConnection conn, int target)
     {
-        // очищаємо таблицю перед вставкою
         using var clear = new NpgsqlCommand("TRUNCATE TABLE shelters RESTART IDENTITY CASCADE", conn);
         clear.ExecuteNonQuery();
 
-        // додаємо задану кількість притулків
         for (int i = 1; i <= target; i++)
         {
-            string phone = $"0{(100000000 + i):D9}"; // генеруємо телефон
+            string phone = $"0{(100000000 + i):D9}";
             string sql = $"INSERT INTO shelters (shelter_name, address, phone, email) " +
                          $"VALUES ('Shelter {i}', 'Street {i}, City', '{phone}', 'shelter{i}@mail.com')";
             using var cmd = new NpgsqlCommand(sql, conn);
@@ -53,14 +51,12 @@ class Program
     // ----------------- Вставка користувачів -----------------
     static void InsertUsers(NpgsqlConnection conn, int target)
     {
-        // очищаємо таблицю
         using var clear = new NpgsqlCommand("TRUNCATE TABLE users RESTART IDENTITY CASCADE", conn);
         clear.ExecuteNonQuery();
 
-        // додаємо користувачів
         for (int i = 1; i <= target; i++)
         {
-            string phone = $"0{(200000000 + i):D9}"; // телефон
+            string phone = $"0{(200000000 + i):D9}";
             string sql = $"INSERT INTO users (user_name, user_surname, email, password, phone, role) " +
                          $"VALUES ('User{i}', 'Surname{i}', 'user{i}@mail.com', 'pass{i}', '{phone}', 'user')";
             using var cmd = new NpgsqlCommand(sql, conn);
@@ -71,25 +67,24 @@ class Program
     // ----------------- Вставка тварин -----------------
     static void InsertPets(NpgsqlConnection conn, int target)
     {
-        // очищаємо таблицю
         using var clear = new NpgsqlCommand("TRUNCATE TABLE pets RESTART IDENTITY CASCADE", conn);
         clear.ExecuteNonQuery();
 
-        string[] types = { "Cat", "Dog", "Rabbit" };  // види тварин
-        string[] genders = { "Male", "Female" };      // стать
+        string[] types = { "Cat", "Dog", "Rabbit" };
+        string[] genders = { "Male", "Female" };
+        string[] statuses = { "available", "adopted", "treatment", "reserved" };
 
-        // додаємо тварин
         for (int i = 1; i <= target; i++)
         {
             string type = types[(i - 1) % types.Length];
             string gender = genders[(i - 1) % genders.Length];
+            string status = statuses[(i - 1) % statuses.Length];
 
-            // прив’язуємо тварину до притулку (рівномірно)
             int shelterId = ((i - 1) / (target / 4)) + 1;
             if (shelterId > 4) shelterId = 4;
 
-            string sql = $"INSERT INTO pets (pet_name, type, age, gender, description, health, photourl, shelter_id) " +
-                         $"VALUES ('Pet{i}', '{type}', {1 + i % 10}, '{gender}', 'Description {i}', 'Healthy', 'http://photo{i}.jpg', {shelterId})";
+            string sql = $"INSERT INTO pets (pet_name, type, age, gender, description, health, photourl, shelter_id, status) " +
+                         $"VALUES ('Pet{i}', '{type}', {1 + i % 10}, '{gender}', 'Description {i}', 'Healthy', 'http://photo{i}.jpg', {shelterId}, '{status}')";
             using var cmd = new NpgsqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
         }
@@ -98,13 +93,11 @@ class Program
     // ----------------- Вставка заявок -----------------
     static void InsertAdoptions(NpgsqlConnection conn, int target)
     {
-        // очищаємо таблицю
         using var clear = new NpgsqlCommand("TRUNCATE TABLE adoption_requests RESTART IDENTITY CASCADE", conn);
         clear.ExecuteNonQuery();
 
-        string[] statuses = { "new", "in_progress", "approved", "rejected" }; // статуси
+        string[] statuses = { "new", "in_progress", "approved", "rejected" };
 
-        // додаємо заявки
         for (int i = 1; i <= target; i++)
         {
             string status = statuses[(i - 1) % statuses.Length];
@@ -121,23 +114,19 @@ class Program
     // ----------------- Вивід даних із таблиці -----------------
     static void ShowTableSummary(NpgsqlConnection conn, string tableName, string columns)
     {
-        // рахуємо кількість рядків
         string countSql = $"SELECT COUNT(*) FROM {tableName}";
         using var countCmd = new NpgsqlCommand(countSql, conn);
         long count = (long)countCmd.ExecuteScalar();
         Console.WriteLine($"\nТаблиця {tableName}: {count} записів");
 
-        // виводимо вміст таблиці
         string selectSql = $"SELECT {columns} FROM {tableName}";
         using var selectCmd = new NpgsqlCommand(selectSql, conn);
         using var reader = selectCmd.ExecuteReader();
 
-        // шапка таблиці
         for (int i = 0; i < reader.FieldCount; i++)
             Console.Write(reader.GetName(i) + " | ");
         Console.WriteLine("\n" + new string('-', reader.FieldCount * 15));
 
-        // рядки таблиці
         while (reader.Read())
         {
             for (int i = 0; i < reader.FieldCount; i++)
@@ -147,7 +136,7 @@ class Program
         reader.Close();
     }
 
-    // ----------------- Вивід тварин з притулками (JOIN) -----------------
+    // ----------------- Вивід тварин з притулками -----------------
     static void ShowPetsWithShelters(NpgsqlConnection conn)
     {
         Console.WriteLine("\nТаблиця pets (з JOIN shelters):");
@@ -164,12 +153,10 @@ class Program
         using var cmd = new NpgsqlCommand(sql, conn);
         using var reader = cmd.ExecuteReader();
 
-        // шапка
         for (int i = 0; i < reader.FieldCount; i++)
             Console.Write(reader.GetName(i) + " | ");
         Console.WriteLine("\n" + new string('-', reader.FieldCount * 15));
 
-        // рядки
         while (reader.Read())
         {
             for (int i = 0; i < reader.FieldCount; i++)
@@ -196,12 +183,10 @@ class Program
         using var cmd = new NpgsqlCommand(sql, conn);
         using var reader = cmd.ExecuteReader();
 
-        // шапка
         for (int i = 0; i < reader.FieldCount; i++)
             Console.Write(reader.GetName(i) + " | ");
         Console.WriteLine("\n" + new string('-', reader.FieldCount * 15));
 
-        // рядки
         while (reader.Read())
         {
             for (int i = 0; i < reader.FieldCount; i++)
