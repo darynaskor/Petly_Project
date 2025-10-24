@@ -17,8 +17,11 @@ CREATE TABLE pets (
     description TEXT,
     health TEXT,
     photoURL TEXT,
+    status VARCHAR(20) DEFAULT 'available'
+        CHECK (status IN ('available', 'adopted', 'treatment', 'reserved')),
     shelter_id INT REFERENCES shelters(shelter_id) ON DELETE CASCADE
 );
+
 
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
@@ -36,4 +39,5 @@ CREATE TABLE adoption_requests (
     pet_id INT REFERENCES pets(pet_id) ON DELETE CASCADE,
     date DATE DEFAULT CURRENT_DATE,
     status VARCHAR(20) CHECK (status IN ('new', 'in_progress', 'approved', 'rejected'))
+
 );
