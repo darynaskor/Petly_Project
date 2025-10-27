@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Petly.Maui.Views.PetDetailsPage"  
+             Title="PetDetailsPage"
+             BackgroundColor='#FFFFFBF7'>
+    
+    <Grid Background="{DynamicResource Theme_BackgroundBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" /> <RowDefinition Height="*" />  </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Rectangle HorizontalOptions="Fill" VerticalOptions="Fill" StrokeThickness="2" Fill="#00D4D4D4">
+                <Rectangle.Stroke>
+                    <SolidColorBrush Color="{DynamicResource Theme_TextColor}" />
+                </Rectangle.Stroke>
+            </Rectangle>
+            <Label Text="PETLY " TextColor="Black" FontSize="32" Margin="18,0,0,0" 
+                   HorizontalOptions="Start" VerticalOptions="Center"/>
+            <StackLayout Orientation="Horizontal" Spacing="5" Margin="115,0,10,0" 
+                         HorizontalOptions="Start" VerticalOptions="Center">
+                <Button Text="Тварини" TextColor="Black" FontSize="18" Padding="5,0" BackgroundColor="Transparent" BorderWidth="0" HeightRequest="40"/>
+                <Label Text="|" TextColor="Black" FontSize="23" VerticalOptions="Center" />
+                <Button Text="Мапа" TextColor="Black" FontSize="18" Padding="5,0" BackgroundColor="Transparent" BorderWidth="0" HeightRequest="40"/>
+                <Label Text="|" TextColor="Black" FontSize="23" VerticalOptions="Center" />
+                <Button Text="Про Нас" TextColor="Black" FontSize="18" Padding="5,0" BackgroundColor="Transparent" BorderWidth="0" HeightRequest="40"/>
+                <Label Text="|" TextColor="Black" FontSize="23" VerticalOptions="Center" />
+                <Button Text="Внесок" TextColor="Black" FontSize="18" Padding="5,0" BackgroundColor="Transparent" BorderWidth="0" HeightRequest="40"/>
+                <Label Text="|" TextColor="Black" FontSize="23" VerticalOptions="Center" />
+                <Button Text="Волонтерство" TextColor="Black" FontSize="18" Padding="5,0" BackgroundColor="Transparent" BorderWidth="0" HeightRequest="40"/>
+                <Image Source="user_icon.png" HorizontalOptions="End" Margin="0,0,10,0" WidthRequest="30" />
+            </StackLayout>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="20, 20, 20, 20" RowSpacing="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" /> <RowDefinition Height="*" />    </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Text="&lt; Назад" TextColor="Black" 
+                    BackgroundColor="#FFFFC04B" BorderWidth="1" CornerRadius="8" 
+                    HeightRequest="35" WidthRequest="100" HorizontalOptions="Start"
+                    Clicked="OnBackButtonClicked" /> <Grid Grid.Row="1" ColumnDefinitions="400, *" ColumnSpacing="30" HorizontalOptions="Fill">
+                
+                <StackLayout Grid.Column="0" Spacing="10" HorizontalOptions="Start">
+                    
+                    <Border Stroke="Black" StrokeThickness="1" WidthRequest="400" HeightRequest="300" HorizontalOptions="Start">
+                        <Image Aspect="AspectFill" 
+                               Source="https://pesyk.kiev.ua/wp-content/uploads/Ryzhie-britanskie-koshki-2.jpg" 
+                               Margin="1"/>
+                    </Border>
+                    
+                    <Grid ColumnDefinitions="Auto, *, Auto" HorizontalOptions="Fill">
+                        <Label Grid.Column="0" Text="Кіт, Томас, 2 роки" 
+                               FontSize="20" TextColor="Black" VerticalOptions="Center" />
+                               
+                        <StackLayout Grid.Column="2" Orientation="Horizontal" Spacing="10" VerticalOptions="Center">
+                            <Label Text="←" FontSize="24" TextColor="Black" />
+                            <Label Text="→" FontSize="24" TextColor="Black" />
+                        </StackLayout>
+                    </Grid>
+                    
+                </StackLayout>
+                
+                <StackLayout Grid.Column="1" Spacing="20" HorizontalOptions="Fill">
+                    
+                    <Label Text="Цей кіт поєднує в собі аристократичну зовнішність та ніжний характер. Томас надзвичайно лагідний і обожнює довгі сеанси погладжування, під час яких голосно муркоче, наче маленький трактор. Він активний у своїх іграх, але врівноважений і охайний, чудово ладнає з тихими дітьми. Томас стане ідеальним компаньйоном для спокійної сім'ї або одинака, який шукає вірного, пухнастого друга. Готовий дарувати тепло і затишок!"
+                           FontSize="16" TextColor="Black" LineBreakMode="WordWrap" VerticalOptions="Fill" />
+                           
+                    <StackLayout Orientation="Horizontal" Spacing="12" HorizontalOptions="End">
+                        <Button Text="Допомога" 
+                                BackgroundColor="#E0E0E0" 
+                                TextColor="Black"
+                                FontSize="20"
+                                CornerRadius="5" 
+                                BorderWidth="1"
+                                HeightRequest="40" 
+                                WidthRequest="150" />
+                        <Button Text="Адопція" 
+                                BackgroundColor="#A0C4FF" 
+                                TextColor="Black"
+                                FontSize="15"
+                                CornerRadius="5" 
+                                BorderWidth="1"
+                                HeightRequest="40" 
+                                WidthRequest="150" />
+                    </StackLayout>
+                    
+                </StackLayout>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

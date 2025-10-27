@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <_PostProcessingItem Include="Petly.Maui.app/Contents/MacOS/Petly.Maui">
+      <IsAppExtension>false</IsAppExtension>
+      <BCSymbolMapName>Petly.Maui.bcsymbolmap</BCSymbolMapName>
+      <NoDSymUtil>true</NoDSymUtil>
+      <dSYMSourcePathExists>false</dSYMSourcePathExists>
+      <NoSymbolStrip>true</NoSymbolStrip>
+      <dSYMInfoPlistRelativePath>Petly.Maui.app.dSYM\Contents\Info.plist</dSYMInfoPlistRelativePath>
+      <SymbolFile>/Users/darynaskorobogatykh/Petly.Maui/obj/Debug/net9.0-maccatalyst/mtouch-symbols.list</SymbolFile>
+      <DSymName>Petly.Maui.app.dSYM</DSymName>
+      <SourceProjectPath>/Users/darynaskorobogatykh/Petly.Maui</SourceProjectPath>
+      <IsXPCService></IsXPCService>
+    </_PostProcessingItem>
+  </ItemGroup>
+</Project>

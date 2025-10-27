@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Petly.Maui.Views.PetsListPage"
+             Title="PetsListPage"
+             BackgroundColor="#FFFFFBF7">
+
+    <Grid Background="{DynamicResource Theme_BackgroundBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Grid.Row="0">
+            <Rectangle HorizontalOptions="Fill" VerticalOptions="Fill" StrokeThickness="2" Fill="#00D4D4D4">
+                <Rectangle.Stroke>
+                    <SolidColorBrush Color="{DynamicResource Theme_TextColor}" />
+                </Rectangle.Stroke>
+            </Rectangle>
+
+            <Label Text="PETLY" TextColor="Black" FontSize="32" Margin="18,0,0,0"
+                   HorizontalOptions="Start" VerticalOptions="Center" />
+
+            <StackLayout Orientation="Horizontal" Spacing="5" Margin="115,0,10,0"
+                         HorizontalOptions="Start" VerticalOptions="Center">
+                <Button Text="Тварини" TextColor="Black" FontSize="18" Padding="5,0"
+                        BackgroundColor="Transparent" BorderWidth="0" HeightRequest="40" />
+                <Label Text="|" TextColor="Black" FontSize="23" VerticalOptions="Center" />
+
+                <Button Text="Мапа" TextColor="Black" FontSize="18" Padding="5,0"
+                        BackgroundColor="Transparent" BorderWidth="0" HeightRequest="40" />
+                <Label Text="|" TextColor="Black" FontSize="23" VerticalOptions="Center" />
+
+                <Button Text="Про Нас" TextColor="Black" FontSize="18" Padding="5,0"
+                        BackgroundColor="Transparent" BorderWidth="0" HeightRequest="40" />
+                <Label Text="|" TextColor="Black" FontSize="23" VerticalOptions="Center" />
+
+                <Button Text="Внесок" TextColor="Black" FontSize="18" Padding="5,0"
+                        BackgroundColor="Transparent" BorderWidth="0" HeightRequest="40" />
+                <Label Text="|" TextColor="Black" FontSize="23" VerticalOptions="Center" />
+
+                <Button Text="Волонтерство" TextColor="Black" FontSize="18" Padding="5,0"
+                        BackgroundColor="Transparent" BorderWidth="0" HeightRequest="40" />
+            </StackLayout>
+        </Grid>
+
+        <!-- Body -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout>
+                <!-- Filter buttons -->
+                <StackLayout Orientation="Horizontal" Spacing="15"
+                             Margin="30,15,0,0" HorizontalOptions="Start" VerticalOptions="Start">
+                    <Button Text="Усі" TextColor="Black" FontSize="25" Padding="7,0"
+                            BackgroundColor="#FFFFD129" BorderWidth="1" HeightRequest="40" CornerRadius="8" />
+
+                    <Button Text="Собаки" TextColor="Black" FontSize="20" Padding="7,0"
+                            BackgroundColor="#FFFFC456" BorderWidth="1" HeightRequest="40" CornerRadius="8" />
+
+                    <Button Text="Коти" TextColor="Black" FontSize="25" Padding="7,0"
+                            BackgroundColor="#FFFFC456" BorderWidth="1" HeightRequest="40" CornerRadius="8" />
+
+                    <Button Text="Прилаштовані" TextColor="Black" FontSize="20" Padding="7,0"
+                            BackgroundColor="#FFFFC456" BorderWidth="1" HeightRequest="40" CornerRadius="8" />
+                    <Border Grid.Column="0" Stroke="Black" StrokeThickness="1" Padding="1,0,0,0" HorizontalOptions="End" WidthRequest="250">
+                        <HorizontalStackLayout Spacing="5" VerticalOptions="Center">
+                            <Entry Placeholder="Пошук" FontSize="15" VerticalOptions="Center" PlaceholderColor="#888888" TextColor="Black"
+                                   HorizontalOptions="Fill" IsTextPredictionEnabled="False" ClearButtonVisibility="Never"
+                                   Margin="0" Background="Transparent" />
+                        </HorizontalStackLayout>
+                    </Border>
+                    <Label Grid.Column="1" Text="&#x2637;"
+                           FontSize="50"
+                           TextColor="Black"
+                           BackgroundColor="Transparent"
+                           WidthRequest="30"
+                           HeightRequest="35"
+                           VerticalOptions="Center"
+                           Margin="10,0,15,10" />
+                </StackLayout>
+
+                <!-- Cards grid -->
+                <Grid Margin="20,70,20,20" ColumnSpacing="20" RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Card 1 -->
+                    <Border Grid.Row="0" Grid.Column="0" Stroke="Black" StrokeThickness="1">
+                        <StackLayout Spacing="0">
+                            <Image Aspect="AspectFill" HeightRequest="200" VerticalOptions="Start" Margin="1">
+                                <Image.Source>
+                                    <UriImageSource Uri="https://pesyk.kiev.ua/wp-content/uploads/Ryzhie-britanskie-koshki-2.jpg" />
+                                </Image.Source>
+                            </Image>
+
+                            <Label Text="Кіт, Томас, 2 роки" FontSize="18" TextColor="Black" Margin="10,15,0,5" />
+
+                            <StackLayout Orientation="Horizontal" Padding="30,15,0,5" Spacing="10">
+                                <Button Text="Більше" Clicked="OnMoreDetailsClicked" BackgroundColor="#A0C4FF" TextColor="Black"
+                                        FontSize="20" HorizontalOptions="Fill" BorderWidth="1" CornerRadius="5" HeightRequest="35" />
+                                <Button Text="Допомога" BackgroundColor="#E0E0E0" TextColor="Black" FontSize="15"
+                                        HorizontalOptions="Fill" BorderWidth="1" CornerRadius="5" HeightRequest="35" />
+                                <Button Text="Адопція" BackgroundColor="#E0E0E0" TextColor="Black" FontSize="15"
+                                        HorizontalOptions="Fill" BorderWidth="1" CornerRadius="5" HeightRequest="35" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Border>
+
+                    <!-- Card 2 -->
+                    <Border Grid.Row="0" Grid.Column="1" Stroke="Black" StrokeThickness="1" >
+                        <StackLayout Spacing="0">
+                            <Image Aspect="AspectFill" HeightRequest="200" VerticalOptions="Start" Margin="1">
+                                <Image.Source>
+                                    <UriImageSource Uri="https://www.tierschutzbund.de/fileadmin/_processed_/7/c/csm_schwarzer_Hund_auf_Wiese_c_xkunclova-Shutterstock_01_5566a80d25.jpg" />
+                                </Image.Source>
+                            </Image>
+
+                            <Label Text="Собака, Рік, 6 років" FontSize="18" TextColor="Black" Margin="10,15,0,5" />
+
+                            <StackLayout Orientation="Horizontal" Padding="30,15,0,5" Spacing="5">
+                                <Button Text="Більше" BackgroundColor="#A0C4FF" TextColor="Black" FontSize="20"
+                                        HorizontalOptions="Fill" BorderWidth="1" CornerRadius="5" HeightRequest="35" />
+                                <Button Text="Допомога" BackgroundColor="#E0E0E0" TextColor="Black" FontSize="15"
+                                        HorizontalOptions="Fill" BorderWidth="1" CornerRadius="5" HeightRequest="35" />
+                                <Button Text="Адопція" BackgroundColor="#E0E0E0" TextColor="Black" FontSize="15"
+                                        HorizontalOptions="Fill" BorderWidth="1" CornerRadius="5" HeightRequest="35" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Border>
+
+                    <!-- Card 3 -->
+                    <Border Grid.Row="1" Grid.Column="0" Stroke="Black" StrokeThickness="1">
+                        <StackLayout Spacing="0">
+                            <Image Aspect="AspectFill" HeightRequest="200" VerticalOptions="Start" Margin="1">
+                                <Image.Source>
+                                    <UriImageSource Uri="https://petsi.net/images/blog/text/luchshie-krupnye-porody-sobak-dlya-nachinayushih-vladelcev/labrador.jpg" />
+                                </Image.Source>
+                            </Image>
+
+                            <Label Text="Собака, Голді, 3 роки" FontSize="18" TextColor="Black" Margin="10,15,0,5" />
+
+                            <StackLayout Orientation="Horizontal" Padding="30,15,0,5" Spacing="5">
+                                <Button Text="Більше" BackgroundColor="#A0C4FF" TextColor="Black" FontSize="20"
+                                        HorizontalOptions="Fill" BorderWidth="1" CornerRadius="5" HeightRequest="35" />
+                                <Button Text="Допомога" BackgroundColor="#E0E0E0" TextColor="Black" FontSize="15"
+                                        HorizontalOptions="Fill" BorderWidth="1" CornerRadius="5" HeightRequest="35" />
+                                <Button Text="Адопція" BackgroundColor="#E0E0E0" TextColor="Black" FontSize="15"
+                                        HorizontalOptions="Fill" BorderWidth="1" CornerRadius="5" HeightRequest="35" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Border>
+
+                    <!-- Card 4 -->
+                    <Border Grid.Row="1" Grid.Column="1" Stroke="Black" StrokeThickness="1">
+                        <StackLayout Spacing="0">
+                            <Image Aspect="AspectFill" HeightRequest="200" VerticalOptions="Start" Margin="1">
+                                <Image.Source>
+                                    <UriImageSource Uri="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnl3daPyvx0s36CetpfeXKy8BHAgE3JUBLZg" />
+                                </Image.Source>
+                            </Image>
+
+                            <Label Text="Кіт, Мурчик, 1 рік" FontSize="18" TextColor="Black" Margin="10,15,0,5" />
+
+                            <StackLayout Orientation="Horizontal" Padding="30,15,0,5" Spacing="5">
+                                <Button Text="Більше" BackgroundColor="#A0C4FF" TextColor="Black" FontSize="20"
+                                        HorizontalOptions="Fill" BorderWidth="1" CornerRadius="5" HeightRequest="35" />
+                                <Button Text="Допомога" BackgroundColor="#E0E0E0" TextColor="Black" FontSize="15"
+                                        HorizontalOptions="Fill" BorderWidth="1" CornerRadius="5" HeightRequest="35" />
+                                <Button Text="Адопція" BackgroundColor="#E0E0E0" TextColor="Black" FontSize="15"
+                                        HorizontalOptions="Fill" BorderWidth="1" CornerRadius="5" HeightRequest="35" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Border>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>
