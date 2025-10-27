@@ -1,1 +1,0 @@
--v --force --timestamp=none --sign - --entitlements /Users/darynaskorobogatykh/Petly.Maui/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/Entitlements.xcent /Users/darynaskorobogatykh/Petly.Maui/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/Petly.Maui.app
