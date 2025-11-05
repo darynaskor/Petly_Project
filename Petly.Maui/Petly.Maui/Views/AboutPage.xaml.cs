@@ -9,7 +9,7 @@ namespace Petly.Maui.Views
 
         private async void OnWebsiteClicked(object sender, EventArgs e)
         {
-            await Launcher.OpenAsync("https://petly.example.com"); // 🔹 заміни на свій сайт, якщо є
+            await Launcher.OpenAsync("https://petly.example.com"); 
         }
 
         private async void OnInstagramClicked(object sender, EventArgs e)

@@ -4,30 +4,38 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <Grid HeightRequest="80" Padding="28,0,16,0"
-          BackgroundColor="#FFF9F6EE">
+    <Grid HeightRequest="72" BackgroundColor="#FFF9F7EF">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
         <!-- Лого -->
-        <Label Text="PETLY" FontSize="35" TextColor="Black"
-               VerticalOptions="Center" />
+        <Label Text="PETLY" FontSize="28" TextColor="Black"
+               Margin="20,0,16,0" VerticalOptions="Center"/>
 
         <!-- Меню -->
-        <HorizontalStackLayout Grid.Column="1" Spacing="18"
-                               VerticalOptions="Center" Margin="28,0,0,0">
-
-            <Button x:Name="PetsBtn"     Text="Тварини"     BackgroundColor="Transparent" TextColor="Black" Clicked="OnPets"/>
-            <Label Text="|" VerticalTextAlignment="Center"/>
-            <Button x:Name="MapBtn"      Text="Мапа"        BackgroundColor="Transparent" TextColor="Black" Clicked="OnMap"/>
-            <Label Text="|" VerticalTextAlignment="Center"/>
-            <Button x:Name="AboutBtn"    Text="Про Нас"     BackgroundColor="Transparent" TextColor="Black" Clicked="OnAbout"/>
-            <Label Text="|" VerticalTextAlignment="Center"/>
-            <Button x:Name="DonationBtn" Text="Внесок"      BackgroundColor="Transparent" TextColor="Black" Clicked="OnDonation"/>
-            <Label Text="|" VerticalTextAlignment="Center"/>
-            <Button x:Name="VolBtn"      Text="Волонтерство" BackgroundColor="Transparent" TextColor="Black" Clicked="OnVol"/>
+        <HorizontalStackLayout Grid.Column="1" Spacing="16" VerticalOptions="Center">
+            <Button x:Name="PetsBtn"  Text="Тварини"       Clicked="OnPets"     BackgroundColor="Transparent" TextColor="Black"/>
+            <Label Text="|" VerticalOptions="Center"/>
+            <Button x:Name="MapBtn"   Text="Мапа"          Clicked="OnMap"      BackgroundColor="Transparent" TextColor="Black"/>
+            <Label Text="|" VerticalOptions="Center"/>
+            <Button x:Name="AboutBtn" Text="Про Нас"       Clicked="OnAbout"    BackgroundColor="Transparent" TextColor="Black"/>
+            <Label Text="|" VerticalOptions="Center"/>
+            <Button x:Name="DonationBtn" Text="Внесок"     Clicked="OnDonation" BackgroundColor="Transparent" TextColor="Black"/>
+            <Label Text="|" VerticalOptions="Center"/>
+            <Button x:Name="VolBtn"   Text="Волонтерство"  Clicked="OnVol"      BackgroundColor="Transparent" TextColor="Black"/>
         </HorizontalStackLayout>
+        <ImageButton x:Name="ProfileBtn"
+                     Grid.Column="2"
+                     Source="https://cdn-icons-png.flaticon.com/512/747/747376.png"
+                     WidthRequest="28"
+                     HeightRequest="28"
+                     BackgroundColor="Transparent"
+                     HorizontalOptions="End"
+                     VerticalOptions="Center"
+                     Margin="0,0,20,0"
+                     Clicked="OnProfileClicked"/>
     </Grid>
 </ContentView>

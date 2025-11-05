@@ -11,6 +11,10 @@
     <ShellContent Route="pets"     ContentTemplate="{DataTemplate views:PetsListPage}" />
     <ShellContent Route="about"    ContentTemplate="{DataTemplate views:AboutPage}" />
     <ShellContent Route="donation" ContentTemplate="{DataTemplate views:DonationPage}" />
+    <ShellContent Route="map"      ContentTemplate="{DataTemplate views:MapPage}" />
+    <ShellContent Route="volunteer"      ContentTemplate="{DataTemplate views:VolunteerPage}" />
+    
+
 
     <!-- Авторизація -->
     <ShellContent Route="login"    ContentTemplate="{DataTemplate views:LoginPage}" />

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Petly.Maui.Views.MapPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Petly.Maui.Controls"
+    Title="Мапа"
+    BackgroundColor="#FFFFFBF7">
+
+    <Grid RowDefinitions="Auto,*" Background="{DynamicResource Theme_BackgroundBrush}">
+
+        <controls:TopNavBar />
+
+        <!-- ТІЛО -->
+        <Grid Grid.Row="1" Padding="16" ColumnDefinitions="280,*" ColumnSpacing="16">
+
+            <!-- Лівий список “карточок” притулків -->
+            <VerticalStackLayout Spacing="10">
+                <Border Stroke="#D3453F" StrokeThickness="2" BackgroundColor="White">
+                    <VerticalStackLayout Padding="12,10">
+                        <Label Text="Домівка" FontAttributes="Bold" FontSize="18" TextColor="Black"/>
+                        <Label Text="вул. Стрийська 12" FontSize="14" TextColor="#555"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Stroke="#E3E3E3" StrokeThickness="2" BackgroundColor="White">
+                    <VerticalStackLayout Padding="12,10">
+                        <Label Text="ЛКП &quot;Лев&quot;" FontAttributes="Bold" FontSize="18" TextColor="Black"/>
+                        <Label Text="вул. Шевченка 78" FontSize="14" TextColor="#555"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Stroke="#E3E3E3" StrokeThickness="2" BackgroundColor="White">
+                    <VerticalStackLayout Padding="12,10">
+                        <Label Text="Милосердя" FontAttributes="Bold" FontSize="18" TextColor="Black"/>
+                        <Label Text="вул. Луганська 7" FontSize="14" TextColor="#555"/>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Псевдо-мапа (зображення) з “пінами” та кнопками +- -->
+            <Grid Grid.Column="1" BackgroundColor="White">
+                <Border Stroke="Black" StrokeThickness="1">
+                    <Grid>
+                        <!-- будь-яка картиночка як фон -->
+                        <Image
+                Aspect="AspectFill"
+                Source="https://pro.lviv.ua/wp-content/uploads/karta-lviv.jpeg" />
+
+                        <!-- Піни -->
+                        <Ellipse WidthRequest="26" HeightRequest="26" Fill="#2B2B2B"
+                     TranslationX="40" TranslationY="-160"
+                     HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Ellipse WidthRequest="26" HeightRequest="26" Fill="#2B2B2B"
+                     TranslationX="-140" TranslationY="80"
+                     HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Ellipse WidthRequest="26" HeightRequest="26" Fill="#D3453F"
+                     TranslationX="120" TranslationY="0"
+                     HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                        <!-- Плюс/мінус (всередині карти, справа знизу) -->
+                        <VerticalStackLayout Spacing="8"
+                                             HorizontalOptions="End"
+                                             VerticalOptions="End"
+                                             Margin="0,0,20,20">
+                            <Border WidthRequest="36" HeightRequest="36"
+                                    Stroke="Black" BackgroundColor="#F4F4F4"
+                                    StrokeThickness="1">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8"/>
+                                </Border.StrokeShape>
+                                <Label Text="+" FontSize="20"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       TextColor="Black"/>
+                            </Border>
+
+                            <Border WidthRequest="36" HeightRequest="36"
+                                    Stroke="Black" BackgroundColor="#F4F4F4"
+                                    StrokeThickness="1">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8"/>
+                                </Border.StrokeShape>
+                                <Label Text="−" FontSize="20"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   TextColor="Black"/>
+                            </Border>
+                        </VerticalStackLayout>
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

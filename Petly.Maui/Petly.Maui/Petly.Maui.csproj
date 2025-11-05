@@ -51,6 +51,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <MauiXaml Update="Views\MapPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Views\VolunteerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Controls\TopNavBar.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Petly.Maui.Controls"
+             x:Class="Petly.Maui.Views.VolunteerPage"
+             Title="Волонтерство"
+             BackgroundColor="#FFFFFBF7">
+
+    <Grid RowDefinitions="Auto,*" Background="{DynamicResource Theme_BackgroundBrush}">
+        <!-- Топбар -->
+        <controls:TopNavBar />
+
+        <!-- Контент -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="24" Spacing="16">
+
+                <Label Text="Волонтерство" FontSize="28" FontAttributes="Bold" TextColor="Black"/>
+
+                <Label Text="Стань волонтером Petly" FontSize="18" TextColor="Black"/>
+                <Label Text="Допомагай тваринам, знайомся з іншими волонтерами та обирай притулок для допомоги"
+                       FontSize="16" TextColor="#444" />
+
+                <!-- Форма: 2 колонки -->
+                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="12" RowSpacing="10" Margin="0,8,0,0">
+                    <Entry x:Name="FirstNameEntry" Placeholder="Ім'я" Grid.Row="0" Grid.Column="0"/>
+                    <Entry x:Name="LastNameEntry"  Placeholder="Прізвище" Grid.Row="0" Grid.Column="1"/>
+
+                    <Entry x:Name="EmailEntry"     Placeholder="Email" Grid.Row="1" Grid.Column="0" Keyboard="Email"/>
+                    <Entry x:Name="PhoneEntry"     Placeholder="Телефон +380" Grid.Row="1" Grid.Column="1" Keyboard="Telephone"/>
+
+                    <Picker x:Name="ShelterPicker" Title="Обери притулок" Grid.Row="2" Grid.Column="0">
+                        <Picker.Items>
+                            <x:String>Домівка</x:String>
+                            <x:String>ЛКП "Лев"</x:String>
+                            <x:String>Милосердя</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Picker x:Name="TypePicker" Title="Тип волонтерства" Grid.Row="2" Grid.Column="1">
+                        <Picker.Items>
+                            <x:String>Догляд</x:String>
+                            <x:String>Перевезення</x:String>
+                            <x:String>Збір коштів</x:String>
+                            <x:String>Медіа/соцмережі</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Grid>
+
+                <Button Text="Надіслати заявку"
+                        BackgroundColor="#FFFFD129"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        HeightRequest="42"
+                        CornerRadius="8"
+                        HorizontalOptions="Start"
+                        Clicked="OnSubmitClicked"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

@@ -10,7 +10,7 @@ namespace Petly.Maui.Views
         private async void OnDonateClicked(object sender, EventArgs e)
         {
             await DisplayAlert("Дякуємо 💛", "Ваш внесок прийнято! Ви робите цей світ кращим.", "OK");
-            await Shell.Current.GoToAsync("//petlist");
+            await Shell.Current.GoToAsync("//pets");
         }
     }
 }

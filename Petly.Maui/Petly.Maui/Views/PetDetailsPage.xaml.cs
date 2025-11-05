@@ -12,9 +12,9 @@ namespace Petly.Maui.Views
             {
                 Name = "Томас",
                 Type = "Кіт",
-                Age = 2,
+                Age = 12,
                 Image = "https://pesyk.kiev.ua/wp-content/uploads/Ryzhie-britanskie-koshki-2.jpg",
-                Description = "Цей кіт поєднує в собі аристократичну зовнішність та ніжний характер. Томас надзвичайно лагідний і обожнює довгі сеанси погладжування, під час яких голосно муркоче. Ідеальний компаньйон для спокійної сім'ї."
+                Description = "Томас надзвичайно лагідний і обожнює довгі сеанси погладжування, під час яких голосно муркоче. Ідеальний компаньйон для спокійної сім'ї."
             },
             new PetInfo
             {
@@ -28,15 +28,15 @@ namespace Petly.Maui.Views
             {
                 Name = "Голді",
                 Type = "Собака",
-                Age = 3,
-                Image = "https://www.dogsforgood.org/wp-content/uploads/2020/06/Dogs-For-Good-October-22-2019-308-1024x660.jpg",
+                Age = 5,
+                Image = "https://image.petmd.com/files/styles/978x550/public/2024-08/dogs-for-first-time-owners.jpg",
                 Description = "Голді — розумна і весела, любить активні прогулянки та швидко навчається."
             },
             new PetInfo
             {
                 Name = "Мурчик",
                 Type = "Кіт",
-                Age = 1,
+                Age = 9,
                 Image = "https://people.com/thmb/xHPJAus5iELyf5ndsPJ84GeJTwI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(694x160:696x162)/cat-study-110223-1-efc838c9067349ab82ac24abc4cc2de5.jpg",
                 Description = "Маленький пустун, лагідний і грайливий. Любить м’ячики та мотузочки."
             }
@@ -88,7 +88,7 @@ namespace Petly.Maui.Views
             => await Shell.Current.GoToAsync("donation");
 
         private async void OnPetsClicked(object sender, EventArgs e)
-            => await Shell.Current.GoToAsync("//pets");   // було //petlist — виправлено під реальний маршрут
+            => await Shell.Current.GoToAsync("//pets");   
 
         private async void OnAboutClicked(object sender, EventArgs e)
             => await Shell.Current.GoToAsync("about");

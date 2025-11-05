@@ -15,6 +15,8 @@ public partial class AppShell : Shell
         // Реєстрація додаткових маршрутів
         Routing.RegisterRoute("petdetails", typeof(PetDetailsPage));
         Routing.RegisterRoute("editprofile", typeof(EditProfilePage));
+        Routing.RegisterRoute("map", typeof(MapPage));
+        Routing.RegisterRoute("volunteer", typeof(VolunteerPage));
 
         // Старт з логіну
         FlyoutBehavior = FlyoutBehavior.Disabled;
