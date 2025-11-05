@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Petly.Maui.Views.AboutPage"
+             Title="Про Нас"
+             BackgroundColor="#FFFFFBF7">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25">
+
+            <!-- Заголовок -->
+            <Label Text="🐾 Про нас"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   HorizontalOptions="Center"/>
+
+            <!-- Фото -->
+            <Image Source="https://cdn.pixabay.com/photo/2017/02/20/18/03/dog-2083492_1280.jpg"
+                   HeightRequest="220"
+                   Aspect="AspectFill"
+                   Margin="0,10,0,10"/>
+
+            <!-- Опис -->
+            <Label Text="Petly — це платформа, створена з любов’ю до тварин. Ми допомагаємо безпритульним котикам і песикам знайти свої нові домівки та турботливих господарів."
+                   FontSize="18"
+                   TextColor="Black"
+                   LineBreakMode="WordWrap"/>
+
+            <Label Text="Ми співпрацюємо з притулками, волонтерами та ветеринарами, щоб забезпечити належний догляд за кожною твариною. Наша мета — зробити процес усиновлення простим, безпечним і людяним."
+                   FontSize="18"
+                   TextColor="Black"
+                   LineBreakMode="WordWrap"/>
+
+            <Label Text="💛 Ми віримо, що кожен заслуговує на любов — і люди, і тварини. Приєднуйтесь до нашої спільноти, щоб допомагати разом!"
+                   FontSize="18"
+                   TextColor="Black"
+                   LineBreakMode="WordWrap"/>
+
+            <!-- Кнопки -->
+            <StackLayout Orientation="Horizontal"
+                         Spacing="15"
+                         HorizontalOptions="Center">
+                <Button Text="Наш сайт"
+                        BackgroundColor="#A0C4FF"
+                        TextColor="Black"
+                        Clicked="OnWebsiteClicked"/>
+                <Button Text="Instagram"
+                        BackgroundColor="#FFFFD129"
+                        TextColor="Black"
+                        Clicked="OnInstagramClicked"/>
+            </StackLayout>
+
+            <!-- Контакти -->
+            <BoxView HeightRequest="2" BackgroundColor="#DDDDDD" Margin="0,20,0,10"/>
+            <Label Text="📞 Наші контакти"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   Margin="0,0,0,5"/>
+
+            <VerticalStackLayout Spacing="6">
+                <Label Text="Номер телефону: +380 98 000 00 00"
+                       FontSize="17"
+                       TextColor="Black"/>
+                <Label Text="Пошта: contact@petly.ua"
+                       FontSize="17"
+                       TextColor="Black"/>
+                <Label Text="Адреса: м. Львів"
+                       FontSize="17"
+                       TextColor="Black"/>
+                <Label Text="Години роботи: Пн–Нд 9:00–18:00"
+                       FontSize="17"
+                       TextColor="Black"/>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

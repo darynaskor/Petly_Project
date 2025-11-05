@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Petly.Maui.Controls.TopNavBar"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Grid HeightRequest="80" Padding="28,0,16,0"
+          BackgroundColor="#FFF9F6EE">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Лого -->
+        <Label Text="PETLY" FontSize="35" TextColor="Black"
+               VerticalOptions="Center" />
+
+        <!-- Меню -->
+        <HorizontalStackLayout Grid.Column="1" Spacing="18"
+                               VerticalOptions="Center" Margin="28,0,0,0">
+
+            <Button x:Name="PetsBtn"     Text="Тварини"     BackgroundColor="Transparent" TextColor="Black" Clicked="OnPets"/>
+            <Label Text="|" VerticalTextAlignment="Center"/>
+            <Button x:Name="MapBtn"      Text="Мапа"        BackgroundColor="Transparent" TextColor="Black" Clicked="OnMap"/>
+            <Label Text="|" VerticalTextAlignment="Center"/>
+            <Button x:Name="AboutBtn"    Text="Про Нас"     BackgroundColor="Transparent" TextColor="Black" Clicked="OnAbout"/>
+            <Label Text="|" VerticalTextAlignment="Center"/>
+            <Button x:Name="DonationBtn" Text="Внесок"      BackgroundColor="Transparent" TextColor="Black" Clicked="OnDonation"/>
+            <Label Text="|" VerticalTextAlignment="Center"/>
+            <Button x:Name="VolBtn"      Text="Волонтерство" BackgroundColor="Transparent" TextColor="Black" Clicked="OnVol"/>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentView>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Petly.Maui.ViewModels"
+             xmlns:controls="clr-namespace:Petly.Maui.Controls"
+             x:Class="Petly.Maui.MainPage"
+             x:DataType="viewmodel:MainViewModel"
+             BackgroundColor="#FFFFFBF7">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- ЄДИНИЙ ХЕДЕР -->
+        <controls:TopNavBar />
+
+        <!-- ТІЛО -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="26,16,16,14" Spacing="16">
+                <Label Text="Профіль" TextColor="Black" FontSize="33" Margin="0,0,0,8" />
+
+                <Border StrokeShape="RoundRectangle 8"
+                        StrokeThickness="2"
+                        Stroke="{DynamicResource Theme_TextColor}"
+                        BackgroundColor="#00D4D4D4"
+                        Padding="6"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Start">
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Аватар -->
+                        <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Spacing="8">
+                            <Border WidthRequest="200" HeightRequest="200"
+                                    BackgroundColor="#FFF9F9F9"
+                                    StrokeThickness="2"
+                                    Stroke="Black"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="40"/>
+                                </Border.StrokeShape>
+
+                                <Image WidthRequest="180" HeightRequest="180" Aspect="AspectFit"
+                                       Source="{Binding AvatarUrl}" />
+                            </Border>
+
+                            <Label Text="{Binding FullName}"
+                                   FontSize="20"
+                                   Padding="5"
+                                   HorizontalOptions="Center"
+                                   TextColor="#FF222222"/>
+                        </StackLayout>
+
+                        <!-- Інформація -->
+                        <StackLayout Grid.Column="1" Spacing="5" Margin="40,0,0,0" VerticalOptions="Center">
+                            <Label Text="{Binding FirstName, StringFormat='Імя: {0}'}" TextColor="Black" FontSize="20" />
+                            <Label Text="{Binding LastName,  StringFormat='Прізвище: {0}'}" TextColor="Black" FontSize="20" />
+                            <Label Text="{Binding Email,     StringFormat='Email: {0}'}" TextColor="Black" FontSize="20" />
+
+                            <Button Text="Редагувати дані" 
+                                    TextColor="Black" FontSize="24" 
+                                    Margin="0,15,0,0"
+                                    HorizontalOptions="Start" 
+                                    HeightRequest="50" WidthRequest="200" 
+                                    BackgroundColor="#FFE9BE20" 
+                                    BorderColor="Black" BorderWidth="2" 
+                                    CornerRadius="8" 
+                                    Clicked="EditProfileButton_Clicked"/>
+                        </StackLayout>
+                    </Grid>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

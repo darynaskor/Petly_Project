@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Petly.Maui.Views.RegisterPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:Petly.Maui.ViewModels"
+    x:DataType="viewmodel:RegisterViewModel"
+    Title="Реєстрація"
+    BackgroundColor="#FFFFFBF7">
+
+    <ScrollView>
+        <Grid Padding="24" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+            <Label Text="Petly" FontSize="32" FontAttributes="Bold" TextColor="#FFEA8A00" />
+
+            <Label Grid.Row="1"
+                   Text="Приєднуйся до нас та знайди свого пухнастого друга!"
+                   FontSize="20" Margin="0,8,0,16"/>
+
+            <Grid Grid.Row="2" ColumnDefinitions="Auto,*" Margin="0,0,0,6">
+                <Label Text="Ім'я:" VerticalTextAlignment="Center"/>
+                <Entry Grid.Column="1" Text="{Binding FirstName}" />
+            </Grid>
+
+            <Grid Grid.Row="3" ColumnDefinitions="Auto,*" Margin="0,0,0,6">
+                <Label Text="Прізвище:" VerticalTextAlignment="Center"/>
+                <Entry Grid.Column="1" Text="{Binding LastName}" />
+            </Grid>
+
+            <Grid Grid.Row="4" ColumnDefinitions="Auto,*" Margin="0,0,0,6">
+                <Label Text="Email:" VerticalTextAlignment="Center"/>
+                <Entry Grid.Column="1" Keyboard="Email" Text="{Binding Email}" />
+            </Grid>
+
+            <Grid Grid.Row="5" ColumnDefinitions="Auto,*" Margin="0,0,0,6">
+                <Label Text="Password:" VerticalTextAlignment="Center"/>
+                <Entry Grid.Column="1" IsPassword="True" Text="{Binding Password}" />
+            </Grid>
+
+            <Grid Grid.Row="6" ColumnDefinitions="Auto,*" Margin="0,8,0,0">
+                <CheckBox Grid.Column="0" IsChecked="{Binding Agree}" />
+                <Label Grid.Column="1">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="I agree to the " />
+                            <Span Text="Terms of Use" TextDecorations="Underline"/>
+                            <Span Text=" and " />
+                            <Span Text="Privacy Policy" TextDecorations="Underline"/>
+                            <Span Text="." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+
+            <Label Grid.Row="7" Text="{Binding Error}" TextColor="Red" />
+
+            <Button Grid.Row="8" Text="Зареєструватися" Command="{Binding RegisterCommand}" />
+
+            <Grid Grid.Row="9" ColumnDefinitions="Auto,Auto" Margin="0,8,0,0">
+                <Label Text="Вже є акаунт?" VerticalTextAlignment="Center"/>
+                <Button Grid.Column="1" Text="Увійти" Padding="8,4"
+                        Command="{Binding GoToLoginCommand}" />
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>
