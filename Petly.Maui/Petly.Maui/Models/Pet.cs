@@ -4,8 +4,7 @@ namespace Petly.Maui.Models
 {
     public class Pet
     {
-        [Key]
-        public int pet_id { get; set; }
+        [Key] public int pet_id { get; set; }
 
         [Required(ErrorMessage = "Ім’я тварини є обов’язковим.")]
         [StringLength(50)]

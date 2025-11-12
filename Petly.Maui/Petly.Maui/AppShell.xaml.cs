@@ -17,6 +17,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute("editprofile", typeof(EditProfilePage));
         Routing.RegisterRoute("map", typeof(MapPage));
         Routing.RegisterRoute("volunteer", typeof(VolunteerPage));
+        Routing.RegisterRoute("petedit", typeof(Petly.Maui.Views.PetEditPage));
 
         // Старт з логіну
         FlyoutBehavior = FlyoutBehavior.Disabled;

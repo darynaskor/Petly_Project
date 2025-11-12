@@ -1,27 +1,33 @@
-using Microsoft.Maui.Controls;
+using Petly.Maui.Services;
 
-namespace Petly.Maui.Views
+namespace Petly.Maui.Views;
+
+public partial class PetsListPage : ContentPage
 {
-    public partial class PetsListPage : ContentPage
+    private readonly IAuthService _auth;
+    private bool _isAdmin;
+
+    public PetsListPage()
     {
-        public PetsListPage()
-        {
-            InitializeComponent();
-        }
-
-        private async void OnPetsClicked(object sender, EventArgs e)
-        {
-            // переходимо на ту саму сторінку (оновлення)
-            await Shell.Current.GoToAsync("petlist");
-        }
-        private async void OnAboutClicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync("about");
-        }
-        private async void DonationButton_Clicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync("donation");
-        }
-
+        InitializeComponent();
+        _auth = GetService<IAuthService>()!;
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        _isAdmin = _auth?.IsAdmin ?? false;
+
+        // кнопка "Додати" тільки для адміна
+        AddPetButton.IsVisible = _isAdmin;
+    }
+
+    private async void OnAddPetClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("petedit");
+    }
+
+    private static T? GetService<T>() where T : class =>
+        Application.Current?.Handler?.MauiContext?.Services?.GetService<T>();
 }

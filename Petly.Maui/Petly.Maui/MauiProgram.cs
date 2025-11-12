@@ -41,6 +41,8 @@ namespace Petly.Maui
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<MapPage>();
             builder.Services.AddTransient<VolunteerPage>();
+            builder.Services.AddSingleton<PetService>();
+            builder.Services.AddTransient<Views.PetEditPage>();
 
 
             // Shell через DI

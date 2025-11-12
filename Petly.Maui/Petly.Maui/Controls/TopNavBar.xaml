@@ -11,7 +11,7 @@
                FontSize="28"
                FontAttributes="Bold"
                TextColor="Black"
-               padding="10"
+               Padding="10"
                VerticalOptions="Center"
                Grid.Column="0"/>
 
@@ -24,7 +24,7 @@
 
             <!-- Кнопки навігації -->
             <StackLayout Orientation="Horizontal"
-                         Spacing="16"
+                         Spacing="19"
                          HorizontalOptions="Start"
                          VerticalOptions="Center">
                 <Button x:Name="PetsBtn" Text="Тварини"
@@ -50,14 +50,13 @@
                          Spacing="10"
                          HorizontalOptions="End"
                          VerticalOptions="Center">
-                <Label x:Name="AdminBadge"
+                <Button x:Name="AdminBadge"
                        Text="Admin"
                        IsVisible="False"
-                       Padding="4"
+                       Padding="6"
                        BackgroundColor="#FFE9BE20"
                        CornerRadius="8"
                        TextColor="Black"
-                       FontAttributes="Bold"
                        VerticalOptions="Center" />
                 <Button x:Name="ProfileBtn"
                         Text="👤"

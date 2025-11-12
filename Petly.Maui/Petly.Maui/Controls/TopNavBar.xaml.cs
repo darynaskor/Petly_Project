@@ -40,7 +40,7 @@ public partial class TopNavBar : ContentView
     async void OnAbout(object s, EventArgs e) => await Shell.Current.GoToAsync("//about");
     async void OnDonation(object s, EventArgs e) => await Shell.Current.GoToAsync("//donation");
     async void OnVol(object s, EventArgs e) => await Shell.Current.GoToAsync("//volunteer");
-    async void OnProfile(object s, EventArgs e) => await Shell.Current.GoToAsync("//main"); // твій маршрут профілю
+    async void OnProfile(object s, EventArgs e) => await Shell.Current.GoToAsync("//main"); 
 
     async void OnLogout(object s, EventArgs e)
     {
