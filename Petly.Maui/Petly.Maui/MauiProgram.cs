@@ -24,6 +24,8 @@ namespace Petly.Maui
             // ========= DI: Services =========
             builder.Services.AddSingleton<IAuthService, AuthService>();
             builder.Services.AddSingleton<UserContext>();
+            builder.Services.AddSingleton<ShelterService>();
+
 
             // ========= DI: ViewModels =========
             builder.Services.AddTransient<LoginViewModel>();

@@ -7,6 +7,7 @@ namespace Petly.Maui.Services
     {
         bool IsLoggedIn { get; }
         string? CurrentEmail { get; }
+        bool IsAdmin { get; }
 
         Task<bool> SignInAsync(string email, string password);
 
