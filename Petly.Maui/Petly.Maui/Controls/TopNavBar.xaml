@@ -50,14 +50,13 @@
                          Spacing="10"
                          HorizontalOptions="End"
                          VerticalOptions="Center">
-                <Label x:Name="AdminBadge"
+                <Button x:Name="AdminBadge"
                        Text="Admin"
                        IsVisible="False"
-                       Padding="4"
+                       Padding="6"
                        BackgroundColor="#FFE9BE20"
                        CornerRadius="8"
                        TextColor="Black"
-                       FontAttributes="Bold"
                        VerticalOptions="Center" />
                 <Button x:Name="ProfileBtn"
                         Text="👤"
