@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Petly.Maui.Views.AdminAdoptionListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Заявки на адопцію"
+    BackgroundColor="#FFFFFBF7">
+
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        <Button Text="← Назад"
+                BackgroundColor="#FFFFD129"
+                HeightRequest="40"
+                WidthRequest="100"
+                Clicked="OnBackClicked"/>
+
+        <Label Text="Заявки на адопцію"
+               FontSize="28"
+               FontAttributes="Bold"/>
+
+        <CollectionView x:Name="RequestsList"
+                        SelectionMode="Single"
+                        SelectionChanged="OnRequestSelected">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="Black" StrokeThickness="1" Margin="5">
+                        <VerticalStackLayout Padding="10">
+                            <Label Text="{Binding FirstName}" FontSize="18"/>
+                            <Label Text="{Binding PetName}" FontSize="16" TextColor="#555"/>
+                            <Label Text="{Binding Status}" FontSize="14" TextColor="#777"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

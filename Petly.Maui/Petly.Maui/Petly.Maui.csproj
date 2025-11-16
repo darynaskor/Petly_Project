@@ -51,6 +51,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <MauiXaml Update="Views\AdminAdoptionDetailsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Views\AdminAdoptionListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Views\AdminVolunteerDetailsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Views\AdminVolunteerListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
     <MauiXaml Update="Views\MapPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>

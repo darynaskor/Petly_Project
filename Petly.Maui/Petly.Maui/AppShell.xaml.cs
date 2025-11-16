@@ -16,13 +16,30 @@ public partial class AppShell : Shell
         Routing.RegisterRoute("petdetails", typeof(PetDetailsPage));
         Routing.RegisterRoute("editprofile", typeof(EditProfilePage));
         Routing.RegisterRoute("map", typeof(MapPage));
+
+        // Волонтерство
         Routing.RegisterRoute("volunteer", typeof(VolunteerPage));
+        // Волонтерство адміну
+        Routing.RegisterRoute("admin/volunteer/requests", typeof(AdminVolunteerListPage));
+        Routing.RegisterRoute("admin/volunteer/details", typeof(AdminVolunteerDetailsPage));
+
+
+
         Routing.RegisterRoute("petedit", typeof(Petly.Maui.Views.PetEditPage));
+
+        Routing.RegisterRoute("donation", typeof(DonationPage));
+        // Адопція
+        Routing.RegisterRoute("adoption", typeof(AdoptionPage));
+        Routing.RegisterRoute("admin/requests", typeof(AdminAdoptionListPage));
+        Routing.RegisterRoute("admin/requests/details", typeof(AdminAdoptionDetailsPage));
 
         // Старт з логіну
         FlyoutBehavior = FlyoutBehavior.Disabled;
         GoToAsync("//login");
+
+
     }
+
 
     // Перехід у головну після входу
     public async Task GoToMainAsync()
@@ -30,4 +47,6 @@ public partial class AppShell : Shell
         FlyoutBehavior = FlyoutBehavior.Flyout;
         await GoToAsync("//home");
     }
+
+
 }
