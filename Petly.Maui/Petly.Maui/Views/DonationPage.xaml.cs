@@ -6,97 +6,102 @@ namespace Petly.Maui.Views;
 public partial class DonationPage : ContentPage
 {
     private readonly IDonationService _donationService;
-    private readonly UserContext? _userCtx;
-    private readonly bool _isAdmin;
+    private readonly UserContext _userCtx;
+    private bool _isAdmin;
 
     public DonationPage()
     {
         InitializeComponent();
 
-        // пробуємо взяти сервіси з DI
-        _donationService = GetService<IDonationService>() ?? new DonationService();
-        _userCtx = GetService<UserContext>();
+        _donationService = GetService<IDonationService>()!;
+        _userCtx = GetService<UserContext>()!;
 
-        _isAdmin = _userCtx?.IsAdmin ?? false;
+        // варіанти призначення – можеш змінити
+        PurposePicker.ItemsSource = new[]
+        {
+            "Загальна підтримка притулків",
+            "Ліки та лікування",
+            "Корм та базові потреби",
+            "Ремонт / покращення умов"
+        };
     }
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
 
-        try
-        {
-            // якщо адмін – показуємо список, якщо ні – форму
-            UserFormLayout.IsVisible = !_isAdmin;
-            AdminListLayout.IsVisible = _isAdmin;
+        _isAdmin = _userCtx?.IsAdmin ?? false;
 
-            if (_isAdmin)
-            {
-                var list = await _donationService.GetAllAsync();
-                DonationsList.ItemsSource = list;
-            }
-        }
-        catch (Exception ex)
+        // для звичайного користувача – лише форма
+        UserFormScroll.IsVisible = !_isAdmin;
+        UserFormScroll.IsEnabled = !_isAdmin;
+
+        // для адміна – лише список внесків
+        AdminDonationsLayout.IsVisible = _isAdmin;
+        AdminDonationsLayout.IsEnabled = _isAdmin;
+
+        if (_isAdmin)
         {
-            // щоб не падав додаток, а показував помилку
-            await DisplayAlert("Помилка", ex.Message, "OK");
+            // завантажити всі внески
+            var all = await _donationService.GetAllAsync();
+            DonationsList.ItemsSource = all;
+        }
+        else
+        {
+            // підтягнути дані юзера, якщо є
+            var acc = await _userCtx.GetCurrentAccountAsync();
+            if (acc != null)
+            {
+                OwnerNameEntry.Text = $"{acc.FirstName} {acc.LastName}".Trim();
+                EmailEntry.Text = acc.Email;
+            }
         }
     }
 
+    // Надсилання внеску – тільки для звичайних користувачів
     private async void OnDonateClicked(object sender, EventArgs e)
     {
-        try
+        if (_isAdmin) return; // про всяк випадок
+
+        var card = CardNumberEntry.Text?.Trim() ?? "";
+        var owner = OwnerNameEntry.Text?.Trim() ?? "";
+        var email = EmailEntry.Text?.Trim() ?? _userCtx.Email ?? "";
+        var phone = PhoneEntry.Text?.Trim() ?? "";
+        var expiry = ExpiryEntry.Text?.Trim() ?? "";
+        var cvv = CvvEntry.Text?.Trim() ?? "";
+        var amountText = AmountEntry.Text?.Trim() ?? "";
+        var purpose = PurposePicker.SelectedItem?.ToString() ?? "";
+
+        if (!decimal.TryParse(amountText, out var amount) || amount <= 0 ||
+            string.IsNullOrWhiteSpace(card) ||
+            string.IsNullOrWhiteSpace(owner) ||
+            string.IsNullOrWhiteSpace(email) ||
+            string.IsNullOrWhiteSpace(purpose))
         {
-            var owner = OwnerNameEntry.Text?.Trim() ?? "";
-            var email = EmailEntry.Text?.Trim() ?? "";
-            var phone = PhoneEntry.Text?.Trim() ?? "";
-            var card = CardNumberEntry.Text?.Trim() ?? "";
-            var purpose = PurposePicker.SelectedItem?.ToString() ?? "Будь-які потреби";
-            var amountText = AmountEntry.Text?.Trim() ?? "0";
-
-            if (string.IsNullOrWhiteSpace(owner) || string.IsNullOrWhiteSpace(email))
-            {
-                await DisplayAlert("Помилка", "Вкажіть ПІБ та email.", "OK");
-                return;
-            }
-
-            if (!decimal.TryParse(amountText, out var amount) || amount <= 0)
-            {
-                await DisplayAlert("Помилка", "Вкажіть коректну суму.", "OK");
-                return;
-            }
-
-            string last4 = card.Length >= 4 ? card[^4..] : card;
-
-            var donation = new Donation
-            {
-                OwnerName = owner,
-                Email = email,
-                Phone = phone,
-                Purpose = purpose,
-                Amount = amount,
-                CardLast4 = last4,
-                UserEmail = _userCtx?.Email
-            };
-
-            await _donationService.AddAsync(donation);
-
-            await DisplayAlert("Дякуємо!", "Ваш внесок збережено.", "OK");
-
-            // очистити форму
-            CardNumberEntry.Text = "";
-            CardExpiryEntry.Text = "";
-            OwnerNameEntry.Text = "";
-            CvvEntry.Text = "";
-            EmailEntry.Text = "";
-            PhoneEntry.Text = "";
-            AmountEntry.Text = "";
-            PurposePicker.SelectedIndex = -1;
+            await DisplayAlert("Помилка",
+                "Перевір, будь ласка, дані картки, суму та призначення.", "OK");
+            return;
         }
-        catch (Exception ex)
+
+        var donation = new Donation
         {
-            await DisplayAlert("Помилка", ex.Message, "OK");
-        }
+            OwnerName = owner,
+            Email = email,
+            Phone = phone,
+            Amount = amount,
+            Purpose = purpose,
+            CreatedAt = DateTime.Now
+        };
+
+        await _donationService.AddAsync(donation);
+
+        await DisplayAlert("Дякуємо!", "Ваш внесок збережено.", "OK");
+
+        // очищаємо суму, щоб можна було ввести нову
+        AmountEntry.Text = "";
+        PurposePicker.SelectedIndex = -1;
+        CvvEntry.Text = "";
+        ExpiryEntry.Text = "";
     }
 
     private static T? GetService<T>() where T : class =>

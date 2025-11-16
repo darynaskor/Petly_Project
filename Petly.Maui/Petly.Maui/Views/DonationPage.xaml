@@ -3,47 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Petly.Maui.Controls"
              x:Class="Petly.Maui.Views.DonationPage"
-             x:Name="DonationPageRoot"
              Title="Внесок"
              BackgroundColor="#FFFFFBF7">
 
-    <Grid Background="{DynamicResource Theme_BackgroundBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <Grid RowDefinitions="Auto,*"
+          Background="{DynamicResource Theme_BackgroundBrush}">
 
         <!-- Хедер -->
         <controls:TopNavBar />
 
-        <!-- Тіло -->
-        <Grid Grid.Row="1"
-              Padding="16"
-              RowDefinitions="Auto,*"
-              RowSpacing="12">
+        <!-- Вміст -->
+        <Grid Grid.Row="1" Padding="20">
 
-            <!-- ============ ЛЕЙАУТ ДЛЯ ЗВИЧАЙНОГО КОРИСТУВАЧА (ФОРМА) ============ -->
-            <ScrollView x:Name="UserFormLayout" Grid.Row="0" Grid.RowSpan="2" IsVisible="True">
-                <VerticalStackLayout Spacing="12">
+            <!-- ===== 1. ФОРМА ДЛЯ ЗВИЧАЙНОГО КОРИСТУВАЧА ===== -->
+            <ScrollView x:Name="UserFormScroll" IsVisible="True">
+                <VerticalStackLayout Spacing="16">
+
                     <Label Text="Внесок"
                            FontSize="28"
                            FontAttributes="Bold"
-                           TextColor="Black"
-                           Margin="0,0,0,10"/>
+                           TextColor="Black" />
 
-                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                    <!-- Рядок 1 -->
+                    <Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="12">
                         <Entry x:Name="CardNumberEntry"
-                               Grid.Column="0"
                                Placeholder="Номер картки" />
-
-                        <Entry x:Name="CardExpiryEntry"
+                        <Entry x:Name="ExpiryEntry"
                                Grid.Column="1"
                                Placeholder="MM / PP" />
                     </Grid>
 
-                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                    <!-- Рядок 2 -->
+                    <Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="12">
                         <Entry x:Name="OwnerNameEntry"
-                               Grid.Column="0"
                                Placeholder="ПІБ власника" />
                         <Entry x:Name="CvvEntry"
                                Grid.Column="1"
@@ -51,89 +45,80 @@
                                IsPassword="True" />
                     </Grid>
 
-                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                    <!-- Рядок 3 -->
+                    <Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="12">
                         <Entry x:Name="EmailEntry"
-                               Grid.Column="0"
                                Placeholder="Email" />
                         <Entry x:Name="PhoneEntry"
                                Grid.Column="1"
-                               Placeholder="Телефон +380" />
+                               Placeholder="Телефон +380"
+                               Keyboard="Telephone" />
                     </Grid>
 
-                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                    <!-- Рядок 4 -->
+                    <Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="12">
                         <Entry x:Name="AmountEntry"
-                               Grid.Column="0"
-                               Placeholder="Сума" 
-                               Keyboard="Numeric"/>
+                               Placeholder="Сума" />
                         <Picker x:Name="PurposePicker"
                                 Grid.Column="1"
-                                Title="Обрати призначення">
-                            <Picker.Items>
-                                <x:String>Корм / ліки</x:String>
-                                <x:String>Ремонт / облаштування</x:String>
-                                <x:String>Будь-які потреби</x:String>
-                            </Picker.Items>
-                        </Picker>
+                                Title="Обери призначення" />
                     </Grid>
 
                     <Button Text="Допомогти"
-                            HeightRequest="50"
                             BackgroundColor="#FFFFD129"
                             TextColor="Black"
-                            FontAttributes="Bold"
-                            Clicked="OnDonateClicked"/>
+                            CornerRadius="10"
+                            HeightRequest="48"
+                            Clicked="OnDonateClicked" />
                 </VerticalStackLayout>
             </ScrollView>
 
-            <!-- ============ ЛЕЙАУТ ДЛЯ АДМІНА (СПИСОК ВНЕСКІВ) ============ -->
-            <VerticalStackLayout x:Name="AdminListLayout"
-                                 Grid.Row="0"
-                                 Grid.RowSpan="2"
+            <!-- ===== 2. СПИСОК ВНЕСКІВ ДЛЯ АДМІНА ===== -->
+            <VerticalStackLayout x:Name="AdminDonationsLayout"
                                  IsVisible="False"
                                  Spacing="12">
-
                 <Label Text="Список внесків"
-                       FontSize="26"
+                       FontSize="28"
                        FontAttributes="Bold"
-                       TextColor="Black"/>
+                       TextColor="Black" />
 
                 <CollectionView x:Name="DonationsList"
                                 SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Border Stroke="#E0E0E0"
+                            <Border Stroke="#DDDDDD"
                                     StrokeThickness="1"
                                     BackgroundColor="White"
-                                    Margin="0,4,0,4">
-                                <VerticalStackLayout Padding="10">
-                                    <Label Text="{Binding OwnerName}"
+                                    Margin="0,4"
+                                    Padding="10">
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="{Binding DonorName}"
                                            FontAttributes="Bold"
-                                           TextColor="Black"/>
+                                           TextColor="Black" />
                                     <Label Text="{Binding Email}"
                                            FontSize="13"
-                                           TextColor="#555"/>
-
+                                           TextColor="#555" />
+                                    <Label Text="{Binding Phone}"
+                                           FontSize="13"
+                                           TextColor="#555" />
                                     <Label Text="{Binding Amount, StringFormat='Сума: {0} грн'}"
-                                           FontSize="14"
-                                           TextColor="#333"/>
-
+                                           FontSize="13"
+                                           TextColor="#444" />
                                     <Label Text="{Binding Purpose, StringFormat='Призначення: {0}'}"
                                            FontSize="13"
-                                           TextColor="#555"/>
-
+                                           TextColor="#444" />
                                     <Label Text="{Binding CreatedAt, StringFormat='Дата: {0:dd.MM.yyyy HH:mm}'}"
                                            FontSize="12"
-                                           TextColor="#777"/>
-
-                                    <Label Text="{Binding CardLast4, StringFormat='Картка: **** **** **** {0}'}"
-                                           FontSize="12"
-                                           TextColor="#999"/>
+                                           TextColor="#777" />
                                 </VerticalStackLayout>
                             </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </VerticalStackLayout>
+
         </Grid>
     </Grid>
 </ContentPage>
