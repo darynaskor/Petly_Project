@@ -61,26 +61,26 @@ public partial class AdoptionPage : ContentPage
         {
             var request = new AdoptionRequest
             {
-                UserId = "current_user_id", // TODO: реальний userId
-                FirstName = FirstNameEntry.Text ?? "",
-                LastName = LastNameEntry.Text ?? "",
-                Email = EmailEntry.Text ?? "",
-                Phone = PhoneEntry.Text ?? "",
-                UserDescription = DescriptionEntry.Text ?? "",
-                PetName = PetNameEntry.Text ?? "",
-                PetType = PetTypeEntry.Text ?? "",
-                PetAge = PetAgeEntry.Text ?? "",
-                PetGender = PetGenderPicker.SelectedItem?.ToString() ?? ""
+                user_id = "current_user_id", // TODO: реальний userId
+                first_name = FirstNameEntry.Text ?? "",
+                last_name = LastNameEntry.Text ?? "",
+                email = EmailEntry.Text ?? "",
+                phone = PhoneEntry.Text ?? "",
+                user_description = DescriptionEntry.Text ?? "",
+                pet_name = PetNameEntry.Text ?? "",
+                pet_type = PetTypeEntry.Text ?? "",
+                pet_age = PetAgeEntry.Text ?? "",
+                pet_gender = PetGenderPicker.SelectedItem?.ToString() ?? ""
             };
 
-            if (string.IsNullOrWhiteSpace(request.FirstName) ||
-                string.IsNullOrWhiteSpace(request.LastName) ||
-                string.IsNullOrWhiteSpace(request.Email) ||
-                string.IsNullOrWhiteSpace(request.Phone) ||
-                string.IsNullOrWhiteSpace(request.PetName) ||
-                string.IsNullOrWhiteSpace(request.PetType) ||
-                string.IsNullOrWhiteSpace(request.PetAge) ||
-                string.IsNullOrWhiteSpace(request.PetGender))
+            if (string.IsNullOrWhiteSpace(request.first_name) ||
+                string.IsNullOrWhiteSpace(request.last_name) ||
+                string.IsNullOrWhiteSpace(request.email) ||
+                string.IsNullOrWhiteSpace(request.phone) ||
+                string.IsNullOrWhiteSpace(request.pet_name) ||
+                string.IsNullOrWhiteSpace(request.pet_type) ||
+                string.IsNullOrWhiteSpace(request.pet_age) ||
+                string.IsNullOrWhiteSpace(request.pet_gender))
             {
                 await DisplayAlert("Помилка", "Заповніть всі обов'язкові поля", "OK");
                 return;

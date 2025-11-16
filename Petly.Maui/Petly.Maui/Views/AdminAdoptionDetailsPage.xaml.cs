@@ -42,19 +42,19 @@ namespace Petly.Maui.Views
                 if (_request != null)
                 {
                     // Фото тварини
-                    PetPhoto.Source = _request.PetPhotoUrl;
+                    PetPhoto.Source = _request.pet_photoUrl;
 
                     // Дані користувача (підлаштуй під свої поля в AdoptionRequest)
                     // Якщо в моделі є UserName — можна замінити:
                     // UserName.Text = _request.UserName;
-                    UserName.Text = $"{_request.FirstName} {_request.LastName}".Trim();
+                    UserName.Text = $"{_request.first_name} {_request.last_name}".Trim();
 
-                    UserEmail.Text = _request.Email;
-                    UserPhone.Text = _request.Phone;
-                    UserDescription.Text = _request.UserDescription;
+                    UserEmail.Text = _request.email;
+                    UserPhone.Text = _request.phone;
+                    UserDescription.Text = _request.user_description;
 
                     // Інфо про тваринку
-                    PetInfo.Text = $"{_request.PetType}, {_request.PetName}, {_request.PetAge}, {_request.PetGender}";
+                    PetInfo.Text = $"{_request.pet_type}, {_request.pet_name}, {_request.pet_age}, {_request.pet_gender}";
                 }
             }
         }
@@ -63,7 +63,7 @@ namespace Petly.Maui.Views
         {
             if (_request != null)
             {
-                await _adoptionService.UpdateStatusAsync(_request.Id, AdoptionStatus.Підтверджено);
+                await _adoptionService.UpdateStatusAsync(_request.adopt_id, AdoptionStatus.Підтверджено);
                 await DisplayAlert("Успіх", "Заявку підтверджено", "OK");
                 await Shell.Current.GoToAsync("..");
             }
@@ -73,7 +73,7 @@ namespace Petly.Maui.Views
         {
             if (_request != null)
             {
-                await _adoptionService.UpdateStatusAsync(_request.Id, AdoptionStatus.Відхилено);
+                await _adoptionService.UpdateStatusAsync(_request.adopt_id, AdoptionStatus.Відхилено);
                 await DisplayAlert("Готово", "Заявку відхилено", "OK");
                 await Shell.Current.GoToAsync("..");
             }
@@ -83,7 +83,7 @@ namespace Petly.Maui.Views
         {
             if (_request != null)
             {
-                await _adoptionService.MarkPetAsAdoptedAsync(_request.PetId);
+                await _adoptionService.MarkPetAsAdoptedAsync(_request.pet_id);
                 await DisplayAlert("Успіх", "Тваринку позначено як прилаштовану", "OK");
             }
         }

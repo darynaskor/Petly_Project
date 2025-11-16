@@ -26,9 +26,9 @@
                 <DataTemplate>
                     <Border Stroke="Black" StrokeThickness="1" Margin="5">
                         <VerticalStackLayout Padding="10">
-                            <Label Text="{Binding FirstName}" FontSize="18"/>
-                            <Label Text="{Binding PetName}" FontSize="16" TextColor="#555"/>
-                            <Label Text="{Binding Status}" FontSize="14" TextColor="#777"/>
+                            <Label Text="{Binding first_name}" FontSize="18"/>
+                            <Label Text="{Binding pet_name}" FontSize="16" TextColor="#555"/>
+                            <Label Text="{Binding status}" FontSize="14" TextColor="#777"/>
                         </VerticalStackLayout>
                     </Border>
                 </DataTemplate>

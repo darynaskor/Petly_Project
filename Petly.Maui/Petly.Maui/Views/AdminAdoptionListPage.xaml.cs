@@ -43,7 +43,7 @@ namespace Petly.Maui.Views
         {
             if (e.CurrentSelection.FirstOrDefault() is AdoptionRequest req)
             {
-                await Shell.Current.GoToAsync($"admin/requests/details?id={req.Id}");
+                await Shell.Current.GoToAsync($"admin/requests/details?id={req.adopt_id}");
                 ((CollectionView)sender).SelectedItem = null;
             }
         }

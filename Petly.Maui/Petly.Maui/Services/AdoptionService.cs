@@ -55,17 +55,17 @@ namespace Petly.Maui.Services
 
         public Task<List<AdoptionRequest>> GetAllAsync()
         {
-            return Task.FromResult(_cache.OrderByDescending(x => x.Id).ToList());
+            return Task.FromResult(_cache.OrderByDescending(x => x.adopt_id).ToList());
         }
 
         public Task<AdoptionRequest?> GetByIdAsync(string id)
         {
-            return Task.FromResult(_cache.FirstOrDefault(x => x.Id == id));
+            return Task.FromResult(_cache.FirstOrDefault(x => x.adopt_id == id));
         }
 
         public Task UpdateStatusAsync(string id, AdoptionStatus newStatus)
         {
-            var req = _cache.FirstOrDefault(x => x.Id == id);
+            var req = _cache.FirstOrDefault(x => x.adopt_id == id);
             if (req != null)
             {
                 req.StatusEnum = newStatus;
@@ -77,7 +77,7 @@ namespace Petly.Maui.Services
         // Адмін позначає тваринку як прилаштовану
         public Task MarkPetAsAdoptedAsync(string petId)
         {
-            var req = _cache.FirstOrDefault(x => x.PetId == petId);
+            var req = _cache.FirstOrDefault(x => x.pet_id == petId);
             if (req != null)
             {
                 req.IsPetAdopted = true;
@@ -89,7 +89,7 @@ namespace Petly.Maui.Services
         // Отримати заявку конкретного користувача
         public Task<AdoptionRequest?> GetUserRequestAsync(string userId)
         {
-            var req = _cache.FirstOrDefault(x => x.UserId == userId);
+            var req = _cache.FirstOrDefault(x => x.user_id == userId);
             return Task.FromResult(req);
         }
     }

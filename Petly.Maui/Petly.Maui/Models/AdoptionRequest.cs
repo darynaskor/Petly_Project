@@ -12,24 +12,24 @@ namespace Petly.Maui.Models
 
     public class AdoptionRequest
     {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public string adopt_id { get; set; } = Guid.NewGuid().ToString();
 
         // Дані користувача
-        public string UserId { get; set; } = string.Empty;
-        [Required] public string FirstName { get; set; } = string.Empty;
-        [Required] public string LastName { get; set; } = string.Empty;
-        [Required, EmailAddress] public string Email { get; set; } = string.Empty;
-        [Required] public string Phone { get; set; } = string.Empty;
+        public string user_id { get; set; } = string.Empty;
+        [Required] public string first_name { get; set; } = string.Empty;
+        [Required] public string last_name { get; set; } = string.Empty;
+        [Required, EmailAddress] public string email { get; set; } = string.Empty;
+        [Required] public string phone { get; set; } = string.Empty;
 
         // Дані тварини
-        public string PetId { get; set; } = string.Empty;
-        [Required] public string PetName { get; set; } = string.Empty;
-        [Required] public string PetType { get; set; } = string.Empty;
-        [Required] public string PetAge { get; set; } = string.Empty;
-        [Required] public string PetGender { get; set; } = string.Empty;
+        public string pet_id { get; set; } = string.Empty;
+        [Required] public string pet_name { get; set; } = string.Empty;
+        [Required] public string pet_type { get; set; } = string.Empty;
+        [Required] public string pet_age { get; set; } = string.Empty;
+        [Required] public string pet_gender { get; set; } = string.Empty;
 
-        [Required] public string UserDescription { get; set; } = string.Empty;
-        public string PetPhotoUrl { get; set; } = string.Empty;
+        [Required] public string user_description { get; set; } = string.Empty;
+        public string pet_photoUrl { get; set; } = string.Empty;
 
         // Для позначки тваринки як прилаштованої
         public bool IsPetAdopted { get; set; } = false;
