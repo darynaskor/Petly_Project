@@ -1,0 +1,15 @@
+C:\Users\HP\source\repos\AnimalShelter.BLL\AnimalShelter.BLL\obj\Debug\net8.0\AnimalShelter.BLL.csproj.AssemblyReference.cache
+C:\Users\HP\source\repos\AnimalShelter.BLL\AnimalShelter.BLL\obj\Debug\net8.0\AnimalShelter.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\source\repos\AnimalShelter.BLL\AnimalShelter.BLL\obj\Debug\net8.0\AnimalShelter.BLL.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\AnimalShelter.BLL\AnimalShelter.BLL\obj\Debug\net8.0\AnimalShelter.BLL.AssemblyInfo.cs
+C:\Users\HP\source\repos\AnimalShelter.BLL\AnimalShelter.BLL\obj\Debug\net8.0\AnimalShelter.BLL.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\AnimalShelter.BLL\AnimalShelter.BLL\bin\Debug\net8.0\AnimalShelter.BLL.deps.json
+C:\Users\HP\source\repos\AnimalShelter.BLL\AnimalShelter.BLL\bin\Debug\net8.0\AnimalShelter.BLL.dll
+C:\Users\HP\source\repos\AnimalShelter.BLL\AnimalShelter.BLL\bin\Debug\net8.0\AnimalShelter.BLL.pdb
+C:\Users\HP\source\repos\AnimalShelter.BLL\AnimalShelter.BLL\bin\Debug\net8.0\AnimalShelter.DAL.dll
+C:\Users\HP\source\repos\AnimalShelter.BLL\AnimalShelter.BLL\bin\Debug\net8.0\AnimalShelter.DAL.pdb
+C:\Users\HP\source\repos\AnimalShelter.BLL\AnimalShelter.BLL\obj\Debug\net8.0\AnimalSh.D0BE18FD.Up2Date
+C:\Users\HP\source\repos\AnimalShelter.BLL\AnimalShelter.BLL\obj\Debug\net8.0\AnimalShelter.BLL.dll
+C:\Users\HP\source\repos\AnimalShelter.BLL\AnimalShelter.BLL\obj\Debug\net8.0\refint\AnimalShelter.BLL.dll
+C:\Users\HP\source\repos\AnimalShelter.BLL\AnimalShelter.BLL\obj\Debug\net8.0\AnimalShelter.BLL.pdb
+C:\Users\HP\source\repos\AnimalShelter.BLL\AnimalShelter.BLL\obj\Debug\net8.0\ref\AnimalShelter.BLL.dll
