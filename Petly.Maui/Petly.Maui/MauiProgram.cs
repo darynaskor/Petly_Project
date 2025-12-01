@@ -3,6 +3,10 @@ using CommunityToolkit.Maui;
 using Petly.Maui.Services;
 using Petly.Maui.ViewModels;
 using Petly.Maui.Views;
+using AnimalShelter.DAL;
+using AnimalShelter.DAL.Repositories;
+using Microsoft.EntityFrameworkCore;
+using BllPetService = AnimalShelter.BLL.Services.PetService;
 
 namespace Petly.Maui
 {
@@ -22,17 +26,25 @@ namespace Petly.Maui
                 });
 
             // ========= DI: Services =========
+            const string connectionString = "Host=localhost;Port=5432;Database=animal_shelter;Username=postgres;Password=u30zd9CX";
+
+            builder.Services.AddDbContextFactory<AnimalShelterContext>(options =>
+                options.UseNpgsql(connectionString));
+
+            builder.Services.AddScoped(typeof(GenericRepository<>));
+            builder.Services.AddScoped<BllPetService>();
+
             builder.Services.AddSingleton<IAuthService, AuthService>();
             builder.Services.AddSingleton<UserContext>();
             builder.Services.AddSingleton<ShelterService>();
-            builder.Services.AddSingleton<PetService>();
             builder.Services.AddSingleton<IAdoptionService, AdoptionService>();
-            builder.Services.AddSingleton<IVolunteerService, VolunteerService>(); // <- тільки один раз
+            builder.Services.AddSingleton<IVolunteerService, VolunteerService>(); 
 
             // ========= DI: ViewModels =========
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<RegisterViewModel>();
             builder.Services.AddTransient<MainViewModel>();
+            builder.Services.AddTransient<PetsListViewModel>();
             builder.Services.AddTransient<EditProfileViewModel>();
 
             // ========= DI: Pages (користувач) =========

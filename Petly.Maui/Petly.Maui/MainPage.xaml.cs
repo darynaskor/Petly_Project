@@ -1,4 +1,5 @@
-﻿using Petly.Maui.ViewModels;
+﻿using System;
+using Petly.Maui.ViewModels;
 
 namespace Petly.Maui;
 
@@ -6,10 +7,10 @@ public partial class MainPage : ContentPage
 {
     private readonly MainViewModel _vm;
 
-    public MainPage(MainViewModel vm)
+    public MainPage()
     {
         InitializeComponent();
-        _vm = vm;
+        _vm = GetService<MainViewModel>() ?? throw new InvalidOperationException("MainViewModel is not registered.");
         BindingContext = _vm;
     }
 
@@ -23,4 +24,7 @@ public partial class MainPage : ContentPage
     {
         await Shell.Current.GoToAsync("editprofile");
     }
+
+    private static T? GetService<T>() where T : class =>
+        Application.Current?.Handler?.MauiContext?.Services?.GetService<T>();
 }
