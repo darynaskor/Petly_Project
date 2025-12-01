@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JF7MwLF99Dk=",
+  "dgSpecHash": "k3JPi21bHyw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\source\\repos\\AnimalShelter.BLL\\AnimalShelter.BLL\\AnimalShelter.BLL.csproj",
+  "projectFilePath": "C:\\Users\\HP\\source\\repos\\petly1.0\\Petly_Project\\AnimalShelter.BLL\\AnimalShelter.BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.10\\microsoft.entityframeworkcore.9.0.10.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.10\\microsoft.entityframeworkcore.abstractions.9.0.10.nupkg.sha512",
