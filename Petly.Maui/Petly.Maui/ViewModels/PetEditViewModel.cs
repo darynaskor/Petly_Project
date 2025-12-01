@@ -21,11 +21,11 @@ namespace Petly.Maui.ViewModels
             if (EditablePet == null)
                 return;
 
-            Debug.WriteLine($"Saving changes for {EditablePet.PetName}");
+            Debug.WriteLine($"Saving changes for {EditablePet.pet_name}");
 
             await Shell.Current.DisplayAlert(
                 "Збережено",
-                $"Зміни для {EditablePet.PetName} збережено успішно!",
+                $"Зміни для {EditablePet.pet_name} збережено успішно!",
                 "OK");
 
             await Shell.Current.GoToAsync("..");

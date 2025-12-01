@@ -1,3 +1,4 @@
+using System;
 using Petly.Maui.ViewModels;
 
 namespace Petly.Maui.Views;
@@ -6,10 +7,11 @@ public partial class EditProfilePage : ContentPage
 {
     private readonly EditProfileViewModel _vm;
 
-    public EditProfilePage(EditProfileViewModel vm)
+    public EditProfilePage()
     {
         InitializeComponent();
-        _vm = vm;
+        _vm = GetService<EditProfileViewModel>()
+            ?? throw new InvalidOperationException("EditProfileViewModel is not registered.");
         BindingContext = _vm;
     }
 
@@ -18,4 +20,7 @@ public partial class EditProfilePage : ContentPage
         base.OnAppearing();
         await _vm.InitializeAsync();   // ← підтягуємо дані поточного користувача
     }
+
+    private static T? GetService<T>() where T : class =>
+        Application.Current?.Handler?.MauiContext?.Services?.GetService<T>();
 }

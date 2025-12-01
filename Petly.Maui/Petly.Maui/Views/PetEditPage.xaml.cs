@@ -1,23 +1,22 @@
-﻿using System.Collections.ObjectModel;
-using Microsoft.Maui.Controls;
-using Petly.Maui.Models;
+﻿using Microsoft.Maui.Controls;
 using Petly.Maui.Services;
+using BllPetService = AnimalShelter.BLL.Services.PetService;
+using DalPet = AnimalShelter.DAL.Models.Pet;
 
 namespace Petly.Maui.Views;
 
 public partial class PetEditPage : ContentPage, IQueryAttributable
 {
-    private readonly PetService _petService;
+    private readonly BllPetService _petService;
     private readonly UserContext _userCtx;
 
-    private ObservableCollection<Pet> _pets = new();
-    private Pet? _current;    // редагована тваринка (або null для нової)
+    private DalPet? _current;    // редагована тваринка (або null для нової)
 
     public PetEditPage()
     {
         InitializeComponent();
 
-        _petService = GetService<PetService>()!;
+        _petService = GetService<BllPetService>()!;
         _userCtx = GetService<UserContext>()!;
 
         // дозволено лише адмінам
@@ -49,21 +48,13 @@ public partial class PetEditPage : ContentPage, IQueryAttributable
         }
     }
 
-    protected override async void OnAppearing()
-    {
-        base.OnAppearing();
-        _pets = await _petService.LoadAsync();
-    }
-
     private async Task LoadExistingAsync(string idString)
     {
         // PetService зберігає pet_id як int — idString очікуємо у форматі int
         if (!int.TryParse(idString, out var id))
             return;
 
-        var list = await _petService.LoadAsync();
-
-        _current = list.FirstOrDefault(p => p.pet_id == id);
+        _current = await _petService.GetPetByIdAsync(id);
         if (_current is null)
         {
             DeleteBtn.IsVisible = false;
@@ -114,7 +105,7 @@ public partial class PetEditPage : ContentPage, IQueryAttributable
 
         if (_current is null) // створення нової
         {
-            var p = new Pet
+            var p = new DalPet
             {
                 // pet_id задасть репозиторій (інкремент) або sqlite, якщо є
                 pet_name = name,
@@ -127,7 +118,7 @@ public partial class PetEditPage : ContentPage, IQueryAttributable
                 shelter_id = 1 // TODO: підв'язати вибір притулку
             };
 
-            await _petService.AddAsync(_pets, p);
+            await _petService.AddPetAsync(p);
         }
         else // оновлення існуючої
         {
@@ -138,7 +129,7 @@ public partial class PetEditPage : ContentPage, IQueryAttributable
             _current.description = string.IsNullOrWhiteSpace(desc) ? null : desc;
             _current.photourl = string.IsNullOrWhiteSpace(photo) ? null : photo;
 
-            await _petService.UpdateAsync(_pets, _current);
+            await _petService.UpdatePetAsync(_current);
         }
 
         await DisplayAlert("Готово", "Анкету збережено.", "OK");
@@ -153,7 +144,7 @@ public partial class PetEditPage : ContentPage, IQueryAttributable
         var ok = await DisplayAlert("Підтвердження", "Видалити цю анкету?", "Так", "Ні");
         if (!ok) return;
 
-        await _petService.DeleteAsync(_pets, _current.pet_id);
+        await _petService.DeletePetAsync(_current.pet_id);
         await Shell.Current.GoToAsync("//pets");
     }
 

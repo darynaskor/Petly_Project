@@ -8,27 +8,22 @@
 
     <Grid RowDefinitions="Auto,*" Background="{DynamicResource Theme_BackgroundBrush}">
 
-        <!-- 🔹 Верхня панель навігації -->
         <controls:TopNavBar />
 
-        <!-- 🔹 Основний контент -->
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="30" Spacing="25">
 
-                <!-- Заголовок -->
                 <Label Text="🐾 Про нас"
                        FontSize="30"
                        FontAttributes="Bold"
                        TextColor="Black"
                        HorizontalOptions="Center"/>
 
-                <!-- Фото -->
                 <Image Source="https://t4.ftcdn.net/jpg/02/76/14/11/360_F_276141178_vMCrBKrvBrSZDcMpJonrhiG2X9aAsPze.jpg"
                        HeightRequest="220"
                        Aspect="AspectFill"
                        Margin="0,10,0,10"/>
 
-                <!-- Опис -->
                 <Label Text="Petly — це платформа, створена з любов’ю до тварин. Ми допомагаємо безпритульним котикам і песикам знайти свої нові домівки та турботливих господарів."
                        FontSize="18"
                        TextColor="Black"
@@ -44,7 +39,6 @@
                        TextColor="Black"
                        LineBreakMode="WordWrap"/>
 
-                <!-- Кнопки -->
                 <StackLayout Orientation="Horizontal"
                              Spacing="15"
                              HorizontalOptions="Center">
@@ -58,7 +52,6 @@
                             Clicked="OnInstagramClicked"/>
                 </StackLayout>
 
-                <!-- Контакти -->
                 <BoxView HeightRequest="2"
                          BackgroundColor="#DDDDDD"
                          Margin="0,20,0,10"/>

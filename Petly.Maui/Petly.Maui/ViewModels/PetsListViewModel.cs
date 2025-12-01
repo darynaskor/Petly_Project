@@ -1,53 +1,67 @@
+using System;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Linq;
+using AnimalShelter.BLL.Services;
 using Petly.Maui.Views;
+using System.Threading.Tasks;
 
 namespace Petly.Maui.ViewModels
 {
     public partial class PetsListViewModel : ObservableObject
     {
-        // 🔹 Усі тварини
-        private List<Pet> _allPets = new();
+        private readonly PetService _petService;
+        private List<PetCard> _allPets = new();
+        private bool _isInitialized;
 
-        // 🔹 Видимий список
-        public ObservableCollection<Pet> PetsCollection { get; } = new();
+        public ObservableCollection<PetCard> PetsCollection { get; } = new();
 
         [ObservableProperty]
         private string searchQuery = string.Empty;
 
-        public PetsListViewModel()
+        public PetsListViewModel(PetService petService)
         {
-            LoadPets();
+            _petService = petService;
         }
 
-        // 🔹 Статичні дані (тестові)
-        private void LoadPets()
+        public async Task InitializeAsync()
         {
-            _allPets = new List<Pet>
+            if (_isInitialized)
+                return;
+
+            await LoadPetsAsync();
+            _isInitialized = true;
+        }
+
+        private async Task LoadPetsAsync()
+        {
+            try
             {
-                new() { PetName = "Томас", Type = "Кіт", Age = 12, Status = "available",
-                        Description = "Ніжний і лагідний кіт з аристократичною зовнішністю.",
-                        PhotoUrl = "https://pesyk.kiev.ua/wp-content/uploads/Ryzhie-britanskie-koshki-2.jpg" },
+                var pets = await _petService.GetAllPetsAsync();
 
-                new() { PetName = "Рік", Type = "Собака", Age = 6, Status = "available",
-                        Description = "Вірний пес, який обожнює прогулянки та дітей.",
-                        PhotoUrl = "https://www.tierschutzbund.de/fileadmin/_processed_/7/c/csm_schwarzer_Hund_auf_Wiese_c_xkunclova-Shutterstock_01_5566a80d25.jpg" },
+                _allPets = pets.Select(p => new PetCard
+                {
+                    Id = p.pet_id,
+                    PetName = p.pet_name ?? string.Empty,
+                    Type = p.type ?? string.Empty,
+                    Age = p.age,
+                    Status = p.status ?? string.Empty,
+                    Description = p.description ?? string.Empty,
+                    PhotoUrl = p.photourl ?? string.Empty
+                }).ToList();
 
-                new() { PetName = "Голді", Type = "Собака", Age = 5, Status = "available",
-                        Description = "Весела, розумна та слухняна — справжня подруга для сім’ї.",
-                        PhotoUrl = "https://image.petmd.com/files/styles/978x550/public/2024-08/dogs-for-first-time-owners.jpg" },
-
-                new() { PetName = "Мурчик", Type = "Кіт", Age = 9, Status = "adopted",
-                        Description = "Маленький пустун, лагідний і дуже грайливий.",
-                        PhotoUrl = "https://people.com/thmb/xHPJAus5iELyf5ndsPJ84GeJTwI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(694x160:696x162)/cat-study-110223-1-efc838c9067349ab82ac24abc4cc2de5.jpg" }
-            };
-
-            ApplyFilter(p => true);
+                ApplyFilter(p => true);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[PetsListViewModel] Failed to load pets: {ex.Message}");
+            }
         }
 
-        // 🔹 Метод фільтрації
-        private void ApplyFilter(Func<Pet, bool> predicate)
+        private void ApplyFilter(Func<PetCard, bool> predicate)
         {
             PetsCollection.Clear();
             foreach (var pet in _allPets.Where(predicate))
@@ -59,10 +73,12 @@ namespace Petly.Maui.ViewModels
         private void FilterAll() => ApplyFilter(p => true);
 
         [RelayCommand]
-        private void FilterCats() => ApplyFilter(p => p.Type.Contains("Кіт", StringComparison.OrdinalIgnoreCase));
+        private void FilterCats() => ApplyFilter(p =>
+            p.Type.Contains("Кіт", StringComparison.OrdinalIgnoreCase));
 
         [RelayCommand]
-        private void FilterDogs() => ApplyFilter(p => p.Type.Contains("Собака", StringComparison.OrdinalIgnoreCase));
+        private void FilterDogs() => ApplyFilter(p =>
+            p.Type.Contains("Собака", StringComparison.OrdinalIgnoreCase));
 
         [RelayCommand]
         private void FilterAdopted() => ApplyFilter(p => p.Status == "adopted");
@@ -88,29 +104,29 @@ namespace Petly.Maui.ViewModels
 
         // 🔹 Кнопка “Більше”
        [RelayCommand]
-        private async Task MoreInfo(object pet)
+        private async Task MoreInfo(PetCard pet)
         {
             await Shell.Current.GoToAsync("petdetails"); // 🔹 замість nameof(PetDetailsPage)
         }
 
         // 🔹 Кнопка “Допомога”
         [RelayCommand]
-        private async Task HelpPet(object pet)
+        private async Task HelpPet(PetCard pet)
         {
             await Shell.Current.GoToAsync("donation");
         }
 
         [RelayCommand]
-        private async Task AdoptPet(object pet)
+        private async Task AdoptPet(PetCard pet)
         {
             await Shell.Current.GoToAsync("adoption");
         }
 
     }
 
-    // 🔹 Клас моделі тварини
-    public class Pet
+    public class PetCard
     {
+        public int Id { get; set; }
         public string PetName { get; set; } = string.Empty;
         public string Type { get; set; } = string.Empty;
         public int Age { get; set; }

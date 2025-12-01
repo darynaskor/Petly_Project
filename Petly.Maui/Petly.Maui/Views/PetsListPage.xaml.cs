@@ -1,21 +1,30 @@
 using Petly.Maui.Services;
+using Petly.Maui.ViewModels;
 
 namespace Petly.Maui.Views;
 
 public partial class PetsListPage : ContentPage
 {
     private readonly IAuthService _auth;
+    private readonly PetsListViewModel _viewModel;
     private bool _isAdmin;
 
     public PetsListPage()
     {
         InitializeComponent();
         _auth = GetService<IAuthService>()!;
+        _viewModel = GetService<PetsListViewModel>()!;
+        BindingContext = _viewModel;
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
+
+        if (_viewModel is not null)
+        {
+            await _viewModel.InitializeAsync();
+        }
 
         _isAdmin = _auth?.IsAdmin ?? false;
 

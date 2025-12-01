@@ -7,10 +7,6 @@
              Title="Список тварин"
              BackgroundColor="#FFFFFBF7">
 
-    <ContentPage.BindingContext>
-        <viewmodels:PetsListViewModel />
-    </ContentPage.BindingContext>
-
     <Grid Background="{DynamicResource Theme_BackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

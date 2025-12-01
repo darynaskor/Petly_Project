@@ -10,35 +10,67 @@ namespace Petly.Maui.Views
         {
             new PetInfo
             {
-                Name = "Томас",
+                Name = "Боня",
+                Type = "Собака",
+                Age = 2,
+                Image = "https://woodgreen.org.uk/nitropack_static/xoJzNJaUrazkmGClTAEjQlzsnLULSpuy/assets/images/optimized/rev-4d83912/woodgreen.org.uk/wp-content/uploads/2025/09/Tommy.jpg",
+                Description = "Активний, завжди готовий до пригод і довгих прогулянок"
+            },
+            new PetInfo
+            {
+                Name = "Лакі",
                 Type = "Кіт",
-                Age = 12,
-                Image = "https://pesyk.kiev.ua/wp-content/uploads/Ryzhie-britanskie-koshki-2.jpg",
-                Description = "Томас надзвичайно лагідний і обожнює довгі сеанси погладжування, під час яких голосно муркоче. Ідеальний компаньйон для спокійної сім'ї."
+                Age = 9,
+                Image = "https://woodgreen.org.uk/nitropack_static/xoJzNJaUrazkmGClTAEjQlzsnLULSpuy/assets/images/optimized/rev-4d83912/woodgreen.org.uk/wp-content/uploads/2021/12/tabby_cat_in_the_garden-1400x0-c-default.jpeg",
+                Description = "Самостійний, любить сам собі обирати час для ласки"
             },
             new PetInfo
             {
-                Name = "Рік",
-                Type = "Собака",
-                Age = 6,
-                Image = "https://www.tierschutzbund.de/fileadmin/_processed_/7/c/csm_schwarzer_Hund_auf_Wiese_c_xkunclova-Shutterstock_01_5566a80d25.jpg",
-                Description = "Рік — відданий охоронець і справжній друг. Любить прогулянки, добре ладнає з дітьми."
-            },
-            new PetInfo
-            {
-                Name = "Голді",
-                Type = "Собака",
+                Name = "Рекс",
+                Type = "Кіт",
                 Age = 5,
-                Image = "https://image.petmd.com/files/styles/978x550/public/2024-08/dogs-for-first-time-owners.jpg",
-                Description = "Голді — розумна і весела, любить активні прогулянки та швидко навчається."
+                Image = "https://woodgreen.org.uk/wp-content/uploads/2025/01/pud2-1980x1485.jpg",
+                Description = "Дуже лагідний, постійно шукає тепла і уваги"
+            },
+            new PetInfo
+            {
+                Name = "Сніжок",
+                Type = "Собака",
+                Age = 9,
+                Image = "https://woodgreen.org.uk/nitropack_static/xoJzNJaUrazkmGClTAEjQlzsnLULSpuy/assets/images/optimized/rev-4d83912/woodgreen.org.uk/wp-content/uploads/2024/12/117402-Jack-1400x0-c-default.jpg",
+                Description = "Урівноважений, слухняний, легко навчається"
+            },
+            new PetInfo
+            {
+                Name = "Тайсон",
+                Type = "Собака",
+                Age = 10,
+                Image = "https://woodgreen.org.uk/wp-content/uploads/2021/04/00822-MK-DH2-Website-Hero-Dog-Images_1920x1440_Trinity-v2-e1646724809257-768x443.jpg",
+                Description = "Веселий, грайливий, обожнює бути в центрі уваги"
             },
             new PetInfo
             {
                 Name = "Мурчик",
                 Type = "Кіт",
-                Age = 9,
-                Image = "https://people.com/thmb/xHPJAus5iELyf5ndsPJ84GeJTwI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(694x160:696x162)/cat-study-110223-1-efc838c9067349ab82ac24abc4cc2de5.jpg",
-                Description = "Маленький пустун, лагідний і грайливий. Любить м’ячики та мотузочки."
+                Age = 6,
+                Image = "https://woodgreen.org.uk/wp-content/uploads/2025/11/LS.jpg",
+                Description = "Спокійний, уважний, любить дивитися на все збоку."
+            },
+            new PetInfo
+            {
+                Name = "Барсик",
+                Type = "Кіт",
+                Age = 10,
+                Image = "https://woodgreen.org.uk/wp-content/uploads/2025/11/Nosferatu.jpg",
+                Description = "Спочатку осторонь, але швидко прив’язується і стає ласкавим."
+            },
+            new PetInfo
+            {
+                Name = "Рижик",
+                Type = "Собака",
+                Age = 6,
+                Image = "https://woodgreen.org.uk/nitropack_static/xoJzNJaUrazkmGClTAEjQlzsnLULSpuy/assets/images/optimized/rev-6282543/woodgreen.org.uk/wp-content/uploads/2025/05/Bulut-2.jpeg",
+                Description = "Спокійний, любить тишу, рідко гавкає"
             }
         };
 
