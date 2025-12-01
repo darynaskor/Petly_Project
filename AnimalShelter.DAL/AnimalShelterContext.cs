@@ -5,12 +5,10 @@ namespace AnimalShelter.DAL
 {
     public class AnimalShelterContext : DbContext
     {
-        public DbSet<UserAccount> UserAccounts { get; set; }
-        public DbSet<Donation> Donations { get; set; }
-        public DbSet<VolunteerRequest> VolunteerRequests { get; set; }
-        public DbSet<AdoptionRequest> AdoptionRequests { get; set; }
-        public DbSet<Shelter> Shelters { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Shelter> shelters { get; set; }
+        public DbSet<User> users { get; set; }
+        public DbSet<Pet> pets { get; set; }
+        public DbSet<AdoptionRequest> adoption_requests { get; set; }
 
         public AnimalShelterContext() { }
 

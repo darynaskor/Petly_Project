@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\source\\repos\\AnimalShelter.BLL\\AnimalShelter.DAL\\AnimalShelter.DAL.csproj": {}
+    "C:\\Users\\HP\\source\\repos\\petly1.0\\Petly_Project\\AnimalShelter.DAL\\AnimalShelter.DAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\source\\repos\\AnimalShelter.BLL\\AnimalShelter.DAL\\AnimalShelter.DAL.csproj": {
+    "C:\\Users\\HP\\source\\repos\\petly1.0\\Petly_Project\\AnimalShelter.DAL\\AnimalShelter.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\AnimalShelter.BLL\\AnimalShelter.DAL\\AnimalShelter.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\petly1.0\\Petly_Project\\AnimalShelter.DAL\\AnimalShelter.DAL.csproj",
         "projectName": "AnimalShelter.DAL",
-        "projectPath": "C:\\Users\\HP\\source\\repos\\AnimalShelter.BLL\\AnimalShelter.DAL\\AnimalShelter.DAL.csproj",
+        "projectPath": "C:\\Users\\HP\\source\\repos\\petly1.0\\Petly_Project\\AnimalShelter.DAL\\AnimalShelter.DAL.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\source\\repos\\AnimalShelter.BLL\\AnimalShelter.DAL\\obj\\",
+        "outputPath": "C:\\Users\\HP\\source\\repos\\petly1.0\\Petly_Project\\AnimalShelter.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

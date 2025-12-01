@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,39 +7,54 @@ namespace AnimalShelter.DAL.Repositories
 {
     public class GenericRepository<T> : IRepository<T> where T : class
     {
-        private readonly AnimalShelterContext _context;
-        private readonly DbSet<T> _dbSet;
+        private readonly IDbContextFactory<AnimalShelterContext> _contextFactory;
 
-        public GenericRepository(AnimalShelterContext context)
+        public GenericRepository(IDbContextFactory<AnimalShelterContext> contextFactory)
         {
-            _context = context;
-            _dbSet = context.Set<T>();
+            _contextFactory = contextFactory;
         }
 
-        public async Task<List<T>> GetAllAsync() => await _dbSet.ToListAsync();
+        public Task<List<T>> GetAllAsync() =>
+            ExecuteAsync(context => context.Set<T>().ToListAsync());
 
-        public async Task<T?> GetByIdAsync(int id) => await _dbSet.FindAsync(id);
+        public Task<T?> GetByIdAsync(int id) =>
+            ExecuteAsync(async context => await context.Set<T>().FindAsync(id));
 
-        public async Task AddAsync(T entity)
-        {
-            await _dbSet.AddAsync(entity);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task UpdateAsync(T entity)
-        {
-            _dbSet.Update(entity);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task DeleteAsync(int id)
-        {
-            var entity = await _dbSet.FindAsync(id);
-            if (entity != null)
+        public Task AddAsync(T entity) =>
+            ExecuteNonQueryAsync(async context =>
             {
-                _dbSet.Remove(entity);
-                await _context.SaveChangesAsync();
-            }
+                await context.Set<T>().AddAsync(entity);
+                await context.SaveChangesAsync();
+            });
+
+        public Task UpdateAsync(T entity) =>
+            ExecuteNonQueryAsync(async context =>
+            {
+                context.Set<T>().Update(entity);
+                await context.SaveChangesAsync();
+            });
+
+        public Task DeleteAsync(int id) =>
+            ExecuteNonQueryAsync(async context =>
+            {
+                var entity = await context.Set<T>().FindAsync(id);
+                if (entity != null)
+                {
+                    context.Set<T>().Remove(entity);
+                    await context.SaveChangesAsync();
+                }
+            });
+
+        private async Task<TResult> ExecuteAsync<TResult>(Func<AnimalShelterContext, Task<TResult>> action)
+        {
+            await using var context = await _contextFactory.CreateDbContextAsync();
+            return await action(context);
+        }
+
+        private async Task ExecuteNonQueryAsync(Func<AnimalShelterContext, Task> action)
+        {
+            await using var context = await _contextFactory.CreateDbContextAsync();
+            await action(context);
         }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SelJcSV7UBA=",
+  "dgSpecHash": "0bCbX9q3dnM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\source\\repos\\AnimalShelter.BLL\\AnimalShelter.DAL\\AnimalShelter.DAL.csproj",
+  "projectFilePath": "C:\\Users\\HP\\source\\repos\\petly1.0\\Petly_Project\\AnimalShelter.DAL\\AnimalShelter.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
