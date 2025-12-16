@@ -1,0 +1,166 @@
+is_global = true
+build_property.MvvmToolkitEnableINotifyPropertyChangingSupport = true
+build_property._MvvmToolkitIsUsingWindowsRuntimePack = true
+build_property.CsWinRTComponent = 
+build_property.CsWinRTAotOptimizerEnabled = true
+build_property.CsWinRTAotOptimizerEnabled = true
+build_property.CsWinRTAotWarningLevel = 
+build_property.CsWinRTAotWarningLevel = 
+build_property.TargetFramework = net8.0-windows10.0.19041.0
+build_property.TargetPlatformMinVersion = 10.0.19041.0
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 9A19103F-16F7-4668-BE54-9A1E7A4F7556
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Petly.Maui
+build_property.ProjectDir = C:\Users\HP\source\repos\petly.final.log\Petly_Project\Petly.Maui\Petly.Maui\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTAotExportsEnabled = 
+build_property.CsWinRTRcwFactoryFallbackGeneratorForceOptIn = 
+build_property.CsWinRTRcwFactoryFallbackGeneratorForceOptOut = 
+build_property.CsWinRTCcwLookupTableGeneratorEnabled = true
+build_property.CsWinRTMergeReferencedActivationFactories = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Controls/PetCard.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Controls.PetCard.xaml
+build_metadata.AdditionalFiles.TargetPath = Controls\PetCard.xaml
+build_metadata.AdditionalFiles.RelativePath = Controls\PetCard.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Controls/TopNavBar.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Controls.TopNavBar.xaml
+build_metadata.AdditionalFiles.TargetPath = Controls\TopNavBar.xaml
+build_metadata.AdditionalFiles.RelativePath = Controls\TopNavBar.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/AboutPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.AboutPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AboutPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AboutPage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/AddPetPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.AddPetPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AddPetPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AddPetPage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/AdminAdoptionDetailsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.AdminAdoptionDetailsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AdminAdoptionDetailsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AdminAdoptionDetailsPage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/AdminAdoptionListPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.AdminAdoptionListPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AdminAdoptionListPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AdminAdoptionListPage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/AdminVolunteerDetailsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.AdminVolunteerDetailsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AdminVolunteerDetailsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AdminVolunteerDetailsPage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/AdminVolunteerListPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.AdminVolunteerListPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AdminVolunteerListPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AdminVolunteerListPage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/AdoptionPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.AdoptionPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AdoptionPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AdoptionPage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/DonationPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.DonationPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\DonationPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\DonationPage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/EditProfilePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.EditProfilePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\EditProfilePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\EditProfilePage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/LoginPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.LoginPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\LoginPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\LoginPage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/MapPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.MapPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\MapPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\MapPage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/PetDetailsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.PetDetailsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PetDetailsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PetDetailsPage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/PetEditPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.PetEditPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PetEditPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PetEditPage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/PetsListPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.PetsListPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PetsListPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PetsListPage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/RegisterPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.RegisterPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\RegisterPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\RegisterPage.xaml
+
+[C:/Users/HP/source/repos/petly.final.log/Petly_Project/Petly.Maui/Petly.Maui/Views/VolunteerPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Petly.Maui.Views.VolunteerPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\VolunteerPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\VolunteerPage.xaml
