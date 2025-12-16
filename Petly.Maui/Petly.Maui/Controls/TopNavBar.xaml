@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Petly.Maui.Controls.TopNavBar"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#FFF6F4EF">
+
+    <Grid Padding="16,10" RowDefinitions="Auto" ColumnDefinitions="Auto,*">
+        <!-- Логотип -->
+        <Label Text="PETLY"
+               FontSize="28"
+               FontAttributes="Bold"
+               TextColor="Black"
+               Padding="10"
+               VerticalOptions="Center"
+               Grid.Column="0"/>
+
+        <!-- Правий блок: навігація + профіль/вихід -->
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Кнопки навігації -->
+            <StackLayout Orientation="Horizontal"
+                         Spacing="19"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Center">
+                <Button x:Name="PetsBtn" Text="Тварини"
+                        BackgroundColor="Transparent" TextColor="Black"
+                        Clicked="OnPets"/>
+                <Button x:Name="MapBtn" Text="Мапа"
+                        BackgroundColor="Transparent" TextColor="Black"
+                        Clicked="OnMap"/>
+                <Button x:Name="AboutBtn" Text="Про Нас"
+                        BackgroundColor="Transparent" TextColor="Black"
+                        Clicked="OnAbout"/>
+                <Button x:Name="DonationBtn" Text="Внесок"
+                        BackgroundColor="Transparent" TextColor="Black"
+                        Clicked="OnDonation"/>
+                <Button x:Name="VolBtn" Text="Волонтерство"
+                        BackgroundColor="Transparent" TextColor="Black"
+                        Clicked="OnVol"/>
+            </StackLayout>
+
+            <!-- Праворуч: Admin badge + профіль + вихід -->
+            <StackLayout Grid.Column="1"
+                         Orientation="Horizontal"
+                         Spacing="10"
+                         HorizontalOptions="End"
+                         VerticalOptions="Center">
+                <Button x:Name="AdminBadge"
+                       Text="Admin"
+                       IsVisible="False"
+                       Padding="6"
+                       BackgroundColor="#FFE9BE20"
+                       CornerRadius="8"
+                       TextColor="Black"
+                       VerticalOptions="Center" />
+                <Button x:Name="ProfileBtn"
+                        Text="👤"
+                        BackgroundColor="Transparent"
+                        TextColor="Black"
+                        Clicked="OnProfile"/>
+                <Button x:Name="LogoutBtn"
+                        Text="Вийти"
+                        IsVisible="False"
+                        BackgroundColor="red"
+                        TextColor="Black"
+                        CornerRadius="8"
+                        Clicked="OnLogout"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentView>

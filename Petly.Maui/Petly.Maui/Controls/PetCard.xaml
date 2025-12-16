@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Petly.Maui.Models"
+             x:Class="Petly.Maui.Controls.PetCard"
+             x:DataType="model:Pet">
+
+    <Border Padding="10" Margin="10">
+
+        <Border.Shadow>
+            <Shadow Brush="Black"
+                    Offset="5,5"
+                    Opacity="0.3"
+                    Radius="10" />
+        </Border.Shadow>
+
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="10" />
+        </Border.StrokeShape>
+
+        <StackLayout Orientation="Horizontal" Spacing="15">
+            <Image
+                Source="{Binding photourl}"
+                Aspect="AspectFill"
+                HeightRequest="60"
+                WidthRequest="60">
+                <Image.Clip>
+                    <RoundRectangleGeometry CornerRadius="30" />
+                </Image.Clip>
+            </Image>
+            
+            <VerticalStackLayout VerticalOptions="Center">
+                <Label Text="{Binding pet_name}" FontSize="Large" FontAttributes="Bold" />
+                <Label Text="{Binding type}" FontSize="Small" />
+            </VerticalStackLayout>
+        </StackLayout>
+        
+    </Border>
+
+</ContentView>
