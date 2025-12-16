@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Petly.Maui.Views.PetDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Petly.Maui.Controls"
+    xmlns:viewmodels="clr-namespace:Petly.Maui.ViewModels"
+    Title="Інформація про тварину"
+    BackgroundColor="#FFFFFBF7">
+
+    <Grid Background="{DynamicResource Theme_BackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- ЄДИНИЙ ХЕДЕР -->
+        <controls:TopNavBar />
+
+        <!-- Body -->
+        <Grid Grid.Row="1" Margin="20,20,20,20" RowSpacing="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Назад -->
+            <Button Grid.Row="0"
+                    Text="← Назад"
+                    TextColor="Black"
+                    BackgroundColor="#FFFFC04B"
+                    BorderWidth="1"
+                    CornerRadius="8"
+                    HeightRequest="35"
+                    WidthRequest="100"
+                    HorizontalOptions="Start"
+                    Clicked="OnBackButtonClicked" />
+
+            <!-- Основна частина -->
+            <Grid Grid.Row="1"
+                  ColumnDefinitions="400,*"
+                  ColumnSpacing="30"
+                  HorizontalOptions="Fill">
+
+                <!-- Фото + стрілки -->
+                <StackLayout Grid.Column="0" Spacing="10" HorizontalOptions="Start">
+                    <Border Stroke="Black" StrokeThickness="1"
+                            WidthRequest="400" HeightRequest="300"
+                            HorizontalOptions="Start">
+                        <Image x:Name="PetImage" Aspect="AspectFill" Margin="1" />
+                    </Border>
+
+                    <Grid ColumnDefinitions="*,Auto" HorizontalOptions="Fill">
+                        <Label x:Name="PetInfoLabel"
+                               Grid.Column="0"
+                               FontSize="20"
+                               TextColor="Black"
+                               VerticalOptions="Center" />
+                        <StackLayout Grid.Column="1"
+                                     Orientation="Horizontal"
+                                     Spacing="10"
+                                     VerticalOptions="Center">
+                            <Button Text="←" FontSize="24" WidthRequest="50"
+                                    BackgroundColor="Transparent"
+                                    Clicked="OnPrevClicked" />
+                            <Button Text="→" FontSize="24" WidthRequest="50"
+                                    BackgroundColor="Transparent"
+                                    Clicked="OnNextClicked" />
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+                <!-- Опис + кнопки -->
+                <StackLayout Grid.Column="1" Spacing="20" HorizontalOptions="Fill">
+                    <Label x:Name="PetDescriptionLabel"
+                           FontSize="16"
+                           TextColor="Black"
+                           LineBreakMode="WordWrap"
+                           VerticalOptions="Fill" />
+
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="12"
+                                 HorizontalOptions="End">
+                        <Button Text="Допомога"
+                                BackgroundColor="#E0E0E0"
+                                TextColor="Black"
+                                FontSize="20"
+                                CornerRadius="5"
+                                BorderWidth="1"
+                                HeightRequest="40"
+                                WidthRequest="150"
+                                Clicked="OnHelpClicked" />
+                        <Button Text="Адопція"
+                                BackgroundColor="#A0C4FF"
+                                TextColor="Black"
+                                FontSize="20"
+                                CornerRadius="5"
+                                BorderWidth="1"
+                                HeightRequest="40"
+                                WidthRequest="150"
+                                Clicked="OnAdoptClicked" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

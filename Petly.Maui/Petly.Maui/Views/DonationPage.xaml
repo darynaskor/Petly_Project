@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Petly.Maui.Controls"
+             x:Class="Petly.Maui.Views.DonationPage"
+             Title="Внесок"
+             BackgroundColor="#FFFFFBF7">
+
+    <Grid RowDefinitions="Auto,*"
+          Background="{DynamicResource Theme_BackgroundBrush}">
+
+        <!-- Хедер -->
+        <controls:TopNavBar />
+
+        <!-- Вміст -->
+        <Grid Grid.Row="1" Padding="20">
+
+            <!-- ===== 1. ФОРМА ДЛЯ ЗВИЧАЙНОГО КОРИСТУВАЧА ===== -->
+            <ScrollView x:Name="UserFormScroll" IsVisible="True">
+                <VerticalStackLayout Spacing="16">
+
+                    <Label Text="Внесок"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="Black" />
+
+                    <!-- Рядок 1 -->
+                    <Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="12">
+                        <Entry x:Name="CardNumberEntry"
+                               Placeholder="Номер картки" />
+                        <Entry x:Name="ExpiryEntry"
+                               Grid.Column="1"
+                               Placeholder="MM / PP" />
+                    </Grid>
+
+                    <!-- Рядок 2 -->
+                    <Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="12">
+                        <Entry x:Name="OwnerNameEntry"
+                               Placeholder="ПІБ власника" />
+                        <Entry x:Name="CvvEntry"
+                               Grid.Column="1"
+                               Placeholder="CVV2"
+                               IsPassword="True" />
+                    </Grid>
+
+                    <!-- Рядок 3 -->
+                    <Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="12">
+                        <Entry x:Name="EmailEntry"
+                               Placeholder="Email" />
+                        <Entry x:Name="PhoneEntry"
+                               Grid.Column="1"
+                               Placeholder="Телефон +380"
+                               Keyboard="Telephone" />
+                    </Grid>
+
+                    <!-- Рядок 4 -->
+                    <Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="12">
+                        <Entry x:Name="AmountEntry"
+                               Placeholder="Сума" />
+                        <Picker x:Name="PurposePicker"
+                                Grid.Column="1"
+                                Title="Обери призначення" />
+                    </Grid>
+
+                    <Button Text="Допомогти"
+                            BackgroundColor="#FFFFD129"
+                            TextColor="Black"
+                            CornerRadius="10"
+                            HeightRequest="48"
+                            Clicked="OnDonateClicked" />
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <!-- ===== 2. СПИСОК ВНЕСКІВ ДЛЯ АДМІНА ===== -->
+            <VerticalStackLayout x:Name="AdminDonationsLayout"
+                                 IsVisible="False"
+                                 Spacing="12">
+                <Label Text="Список внесків"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="Black" />
+
+                <CollectionView x:Name="DonationsList"
+                                SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Stroke="#DDDDDD"
+                                    StrokeThickness="1"
+                                    BackgroundColor="White"
+                                    Margin="0,4"
+                                    Padding="10">
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="{Binding DonorName}"
+                                           FontAttributes="Bold"
+                                           TextColor="Black" />
+                                    <Label Text="{Binding Email}"
+                                           FontSize="13"
+                                           TextColor="#555" />
+                                    <Label Text="{Binding Phone}"
+                                           FontSize="13"
+                                           TextColor="#555" />
+                                    <Label Text="{Binding Amount, StringFormat='Сума: {0} грн'}"
+                                           FontSize="13"
+                                           TextColor="#444" />
+                                    <Label Text="{Binding Purpose, StringFormat='Призначення: {0}'}"
+                                           FontSize="13"
+                                           TextColor="#444" />
+                                    <Label Text="{Binding CreatedAt, StringFormat='Дата: {0:dd.MM.yyyy HH:mm}'}"
+                                           FontSize="12"
+                                           TextColor="#777" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+
+        </Grid>
+    </Grid>
+</ContentPage>

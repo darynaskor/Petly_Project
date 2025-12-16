@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Petly.Maui.Views.MapPage"
+    x:Name="MapPageRoot"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Petly.Maui.Controls"
+    xmlns:local="clr-namespace:Petly.Maui"
+    Title="Мапа"
+    BackgroundColor="#FFFFFBF7">
+
+    <!-- РЕСУРСИ -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- ТУТ НЕ ПОВИННО БУТИ 'clr-namespace:' у тегі! -->
+            <local:EqualityConverter x:Key="EqualityConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <Grid RowDefinitions="Auto,*" Background="{DynamicResource Theme_BackgroundBrush}">
+        <!-- TOP BAR -->
+        <controls:TopNavBar />
+
+        <!-- ОСНОВНА ЧАСТИНА -->
+        <Grid Grid.Row="1" Padding="16" ColumnDefinitions="280,*" ColumnSpacing="16">
+
+            <!-- Ліва панель: форма (для адміна) + список -->
+            <ScrollView Grid.Column="0">
+                <VerticalStackLayout Spacing="12">
+
+                    <!-- Форма додавання нового притулку (видно лише адмінам) -->
+                    <VerticalStackLayout x:Name="AdminForm" Spacing="10" IsVisible="False">
+                        <Label Text="Додати адресу притулку"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="Black"
+                               Margin="0,0,0,6"/>
+
+                        <Entry x:Name="NameEntry" Placeholder="Назва притулку"/>
+                        <Entry x:Name="AddressEntry" Placeholder="Адреса"/>
+                        <Entry x:Name="PhoneEntry" Placeholder="Телефон +380" Keyboard="Telephone"/>
+
+                        <Button Text="Зберегти"
+                                BackgroundColor="#FFFFD129"
+                                TextColor="Black"
+                                CornerRadius="8"
+                                HeightRequest="40"
+                                Clicked="OnAddShelter"/>
+
+                        <BoxView HeightRequest="2" BackgroundColor="#E6E6E6" Margin="0,6,0,0"/>
+                    </VerticalStackLayout>
+
+                    <!-- Заголовок списку -->
+                    <Label Text="Притулки"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           Margin="0,0,0,6"/>
+
+                    <!-- Список притулків -->
+                    <CollectionView x:Name="ShelterList"
+                                    ItemsSource="{Binding Source={x:Reference MapPageRoot}, Path=Shelters}"
+                                    SelectionMode="None"
+                                    Margin="0,0,6,0">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="8"/>
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Stroke="#E3E3E3" StrokeThickness="2" BackgroundColor="White" Padding="0">
+                                    <Grid Padding="12,10" ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                        <!-- Назва + адреса -->
+                                        <VerticalStackLayout>
+                                            <Label Text="{Binding shelter_name}"
+                                                   FontAttributes="Bold"
+                                                   FontSize="18"
+                                                   TextColor="Black"/>
+                                            <Label Text="{Binding address}"
+                                                   FontSize="14"
+                                                   TextColor="#555"/>
+                                        </VerticalStackLayout>
+
+                                        <!-- Кнопка видалення (лише адмін) -->
+                                        <Button Grid.Column="1"
+                                                Text="🗑"
+                                                BackgroundColor="Transparent"
+                                                TextColor="Black"
+                                                CommandParameter="{Binding Id}"
+                                                Clicked="OnDeleteShelter">
+                                            <Button.Triggers>
+                                                <DataTrigger TargetType="Button"
+                                                             Binding="{Binding Source={x:Reference MapPageRoot}, Path=IsAdmin}"
+                                                             Value="False">
+                                                    <Setter Property="IsVisible" Value="False"/>
+                                                </DataTrigger>
+                                            </Button.Triggers>
+                                        </Button>
+                                    </Grid>
+
+                                    <!-- Клік по картці → вибір/підсвічення -->
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={x:Reference MapPageRoot}, Path=SelectShelterCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                    </Border.GestureRecognizers>
+
+                                    <!-- Підсвічування активної картки -->
+                                    <Border.Triggers>
+                                        <DataTrigger TargetType="Border" Value="true">
+                                            <DataTrigger.Binding>
+                                                <MultiBinding Converter="{StaticResource EqualityConverter}">
+                                                    <Binding Path="Id"/>
+                                                    <Binding Source="{x:Reference MapPageRoot}" Path="SelectedShelterId"/>
+                                                </MultiBinding>
+                                            </DataTrigger.Binding>
+                                            <Setter Property="Stroke" Value="#FF5A5A"/>
+                                            <Setter Property="StrokeThickness" Value="2.5"/>
+                                        </DataTrigger>
+                                    </Border.Triggers>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <!-- Права частина: карта -->
+            <Border Grid.Column="1" Stroke="Black" StrokeThickness="1">
+                <Grid>
+                    <!-- Фон карти -->
+                    <Image Source="https://pro.lviv.ua/wp-content/uploads/karta-lviv.jpeg"
+                           Aspect="AspectFill"/>
+
+                    <!-- Canvas + шар пінів -->
+                    <AbsoluteLayout x:Name="MapCanvas"
+                                    HorizontalOptions="Fill"
+                                    VerticalOptions="Fill">
+                        <AbsoluteLayout x:Name="PinsLayer"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill"/>
+                    </AbsoluteLayout>
+
+                    <!-- Псевдо-кнопки + / - -->
+                    <VerticalStackLayout Spacing="8"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="End"
+                                         Margin="0,0,12,12">
+                        <Border WidthRequest="36" HeightRequest="36"
+                                Stroke="Black" StrokeThickness="1" BackgroundColor="#F4F4F4">
+                            <Label Text="+" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black"/>
+                        </Border>
+                        <Border WidthRequest="36" HeightRequest="36"
+                                Stroke="Black" StrokeThickness="1" BackgroundColor="#F4F4F4">
+                            <Label Text="−" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black"/>
+                        </Border>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</ContentPage>

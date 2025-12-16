@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Petly.Maui.ViewModels"
+             xmlns:model="clr-namespace:Petly.Maui.Models"
+             x:Class="Petly.Maui.Views.AddPetPage"
+             x:DataType="viewmodel:AddPetViewModel"
+             Title="Add New Pet"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <ScrollView>
+        <VerticalStackLayout 
+            Padding="{StaticResource PagePadding}" 
+            Spacing="10">
+
+            <Label 
+                Text="Add a New Pet"
+                Style="{StaticResource TitleLabel}"
+                HorizontalOptions="Center" />
+
+            <Entry 
+                Placeholder="Pet's Name" 
+                Text="{Binding Pet.pet_name}" />
+
+            <Entry 
+                Placeholder="Type (e.g., Dog, Cat)" 
+                Text="{Binding Pet.type}" />
+
+            <Entry 
+                Placeholder="Age (years)" 
+                Text="{Binding Pet.age}"
+                Keyboard="Numeric" />
+
+            <Entry 
+                Placeholder="Image URL (http://...)" 
+                Text="{Binding Pet.photourl}"
+                Keyboard="Url" />
+
+            <Editor 
+                Placeholder="Short description..."
+                Text="{Binding Pet.description}"
+                HeightRequest="120"
+                AutoSize="Disabled" />
+            
+            <Button 
+                Text="Save Pet" 
+                Command="{Binding SavePetCommand}" 
+                Margin="0,20,0,0"
+                HorizontalOptions="Fill" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

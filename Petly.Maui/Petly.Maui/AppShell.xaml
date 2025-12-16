@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Petly.Maui.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Petly.Maui"
+    xmlns:views="clr-namespace:Petly.Maui.Views">
+
+    <!-- Основні сторінки -->
+    <ShellContent Route="home" Title="Головна" Icon="icon_home.png" ContentTemplate="{DataTemplate core:MainPage}" />
+    <ShellContent Route="pets" Title="Тварини" Icon="icon_pets.png" ContentTemplate="{DataTemplate views:PetsListPage}" />
+    <ShellContent Route="about" Title="Про нас" Icon="icon_about.png" ContentTemplate="{DataTemplate views:AboutPage}" />
+    <ShellContent Route="donation" Title="Внесок" Icon="icon_donation.png" ContentTemplate="{DataTemplate views:DonationPage}" />
+    <ShellContent Route="map" Title="Мапа" Icon="icon_map.png" ContentTemplate="{DataTemplate views:MapPage}" />
+    <ShellContent Route="volunteer" Title="Волонтерство" Icon="icon_volunteer.png" ContentTemplate="{DataTemplate views:VolunteerPage}" />
+
+    <!-- Адмін: заявки на адопцію -->
+    <FlyoutItem Title="Адопції" Icon="icon_adoption.png">
+        <ShellContent Route="adminadoptionlist" ContentTemplate="{DataTemplate views:AdminAdoptionListPage}" />
+    </FlyoutItem>
+    <!-- Адмін: заявки на волонтерство -->
+    <FlyoutItem Title="Волонтерство (адмін)" Icon="icon_volunteer.png">
+        <ShellContent ContentTemplate="{DataTemplate views:AdminVolunteerListPage}" />
+    </FlyoutItem>
+
+    <!-- Авторизація -->
+    <ShellContent Route="login" Title="Логін" Icon="icon_login.png" ContentTemplate="{DataTemplate views:LoginPage}" />
+    <ShellContent Route="register" Title="Реєстрація" Icon="icon_register.png" ContentTemplate="{DataTemplate views:RegisterPage}" />
+
+</Shell>
