@@ -1,8 +1,0 @@
-/Users/darynaskorobogatykh/Desktop/petly1.0/Petly_Project/AnimalShelter.DAL/obj/Debug/net9.0-maccatalyst18.0/actool/_PartialAppManifest.items
-/Users/darynaskorobogatykh/Desktop/petly1.0/Petly_Project/AnimalShelter.DAL/obj/Debug/net9.0-maccatalyst18.0/actool/_BundleResourceWithLogicalName.items
-/Users/darynaskorobogatykh/Desktop/petly1.0/Petly_Project/AnimalShelter.DAL/obj/Debug/net9.0-maccatalyst18.0/actool/_ProcessedImageAssetsPath.items
-/Users/darynaskorobogatykh/Desktop/petly1.0/Petly_Project/AnimalShelter.DAL/obj/Debug/net9.0-maccatalyst18.0/coremlc/_PartialAppManifest.items
-/Users/darynaskorobogatykh/Desktop/petly1.0/Petly_Project/AnimalShelter.DAL/obj/Debug/net9.0-maccatalyst18.0/coremlc/_BundleResourceWithLogicalName.items
-/Users/darynaskorobogatykh/Desktop/petly1.0/Petly_Project/AnimalShelter.DAL/obj/Debug/net9.0-maccatalyst18.0/coremlc/_ProcessedCoreMLModelsPath.items
-/Users/darynaskorobogatykh/Desktop/petly1.0/Petly_Project/AnimalShelter.DAL/obj/Debug/net9.0-maccatalyst18.0/_ProcessedBundleResourcesPath.items
-/Users/darynaskorobogatykh/Desktop/petly1.0/Petly_Project/AnimalShelter.DAL/obj/Debug/net9.0-maccatalyst18.0/_ProcessedContentPath.items
